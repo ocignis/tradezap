@@ -1,0 +1,14 @@
+node_modules
+coverage
+build
+compiled
+dist
+
+.DS_Store
+*.log
+.vscode
+.idea
+
+npm-debug.log*
+
+*.env

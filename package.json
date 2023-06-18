@@ -1,0 +1,60 @@
+{
+  "name": "datazap",
+  "description": "CLI tool for downloading trading data",
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist",
+    "README.md"
+  ],
+  "scripts": {
+    "prepare": "husky install",
+    "build": "shx rm -rf dist && tsc -p tsconfig.json",
+    "lint": "eslint --max-warnings 0 .",
+    "lint-fix": "eslint --fix .",
+    "lint-staged-husky": "lint-staged",
+    "tsc": "tsc -p tsconfig.json",
+    "format-lint": "prettier --config .prettierrc --check --ignore-unknown .",
+    "format-fix": "prettier --config .prettierrc --write --ignore-unknown -l .",
+    "semantic-release": "semantic-release --branches main",
+    "clean": "shx rm -rf node_modules coverage dist compiled"
+  },
+  "dependencies": {
+    "chalk": "5.2.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "17.6.5",
+    "@commitlint/config-conventional": "17.6.5",
+    "@typescript-eslint/eslint-plugin": "5.59.11",
+    "@typescript-eslint/parser": "5.59.11",
+    "eslint": "8.43.0",
+    "eslint-config-prettier": "8.8.0",
+    "eslint-import-resolver-typescript": "3.5.5",
+    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-jest": "27.2.1",
+    "eslint-plugin-prettier": "4.2.1",
+    "husky": "8.0.3",
+    "lint-staged": "13.2.2",
+    "prettier": "2.8.8",
+    "pretty-quick": "3.1.3",
+    "react-dom": "18.2.0",
+    "semantic-release": "21.0.5",
+    "shx": "0.3.4",
+    "ts-node": "10.9.1",
+    "typescript": "5.1.3"
+  },
+  "license": "MIT",
+  "author": "Marko Kosir <kosir.mar@gmail.com>",
+  "homepage": "https://github.com/ocignis/datazap",
+  "repository": "ocignis/datazap",
+  "bugs": "https://github.com/ocignis/datazap/issues",
+  "keywords": [
+    "trade-data",
+    "trading",
+    "kline",
+    "datazap",
+    "cli",
+    "cli-tool"
+  ]
+}
