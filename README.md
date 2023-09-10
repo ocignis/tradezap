@@ -11,4 +11,4 @@
 _Easily set up a local development environment_
 
 - `bun i`
-- `npm run build`
+- `bun build`
