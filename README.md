@@ -12,3 +12,7 @@ _Easily set up a local development environment_
 
 - `bun i`
 - `bun build`
+
+## Contributing
+
+Contributions are always welcome! If you have any ideas, suggestions, fixes, feel free to contribute.
