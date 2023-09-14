@@ -1,10 +1,10 @@
-# DataZap
+# TradeZap
 
 ⚡ Get trading data in a zap
 
 ## Requirements
 
-- [Bun v1.0.0+](https://bun.sh)
+- [Bun v1.0.1+](https://bun.sh)
 
 ## Running
 

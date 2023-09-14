@@ -1,5 +1,5 @@
 {
-  "name": "datazap",
+  "name": "tradezap",
   "description": "CLI tool for downloading trading data",
   "version": "0.0.0",
   "main": "dist/index.js",
@@ -45,14 +45,14 @@
   },
   "license": "MIT",
   "author": "Marko Kosir <kosir.mar@gmail.com>",
-  "homepage": "https://github.com/ocignis/datazap",
-  "repository": "ocignis/datazap",
-  "bugs": "https://github.com/ocignis/datazap/issues",
+  "homepage": "https://github.com/ocignis/tradezap",
+  "repository": "ocignis/tradezap",
+  "bugs": "https://github.com/ocignis/tradezap/issues",
   "keywords": [
     "trade-data",
     "trading",
     "kline",
-    "datazap",
+    "tradezap",
     "cli",
     "cli-tool"
   ]
