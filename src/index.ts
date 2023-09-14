@@ -10,4 +10,4 @@ const parsed = cli.parse();
 
 console.log(JSON.stringify(parsed, null, 2));
 
-console.log('⚡ Log ~ TradeZap');
+console.log('##### ⚡ Log ~ TradeZap #####');
