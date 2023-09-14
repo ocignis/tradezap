@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "prepare": "husky install",
-    "build": "shx rm -rf dist && tsc -p tsconfig.json",
+    "build": "rm -rf dist && tsc -p tsconfig.json",
     "lint": "eslint --max-warnings 0 .",
     "lint-fix": "eslint --fix .",
     "lint-staged-husky": "lint-staged",
@@ -18,7 +18,7 @@
     "format-lint": "prettier --config .prettierrc --check --ignore-unknown .",
     "format-fix": "prettier --config .prettierrc --write --ignore-unknown -l .",
     "semantic-release": "semantic-release --branches main",
-    "clean": "shx rm -rf node_modules coverage dist compiled"
+    "clean": "rm -rf node_modules coverage dist compiled"
   },
   "dependencies": {
     "chalk": "5.3.0"
@@ -37,7 +37,6 @@
     "lint-staged": "14.0.1",
     "prettier": "3.0.3",
     "semantic-release": "21.1.1",
-    "shx": "0.3.4",
     "typescript": "5.2.2"
   },
   "license": "MIT",
