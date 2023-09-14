@@ -8,6 +8,9 @@
     "/dist",
     "README.md"
   ],
+  "bin": {
+    "tradezap": "dist/index.js"
+  },
   "scripts": {
     "prepare": "husky install",
     "build": "rm -rf dist && tsc -p tsconfig.json",
@@ -17,7 +20,11 @@
     "tsc": "tsc -p tsconfig.json",
     "format-lint": "prettier --config .prettierrc --check --ignore-unknown .",
     "format-fix": "prettier --config .prettierrc --write --ignore-unknown -l .",
+    "test": "bun test",
+    "test-watch": "bun test --watch",
+    "test-coverage": "bun test --coverage",
     "semantic-release": "semantic-release --branches main",
+    "tradezap-latest": "bunx tradezap --config tradezap.ts",
     "clean": "rm -rf node_modules coverage dist compiled"
   },
   "dependencies": {
