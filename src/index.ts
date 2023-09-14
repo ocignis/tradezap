@@ -1,5 +1,7 @@
 import { cac } from 'cac';
 
+console.log('##### ⚡ TradeZap #####');
+
 const cli = cac('TradeZap');
 
 cli.option('-c, --config <filename>', 'Custom config file', {
@@ -13,8 +15,7 @@ cli.option('-o, --out <dir>', 'Output directory', {
 cli.help();
 cli.version('0.0.0');
 
-const parsed = cli.parse();
+cli.parse();
 
-console.log(JSON.stringify(parsed, null, 2));
-
-console.log('##### ⚡ Log ~ TradeZap #####');
+// const parsed = cli.parse();
+// console.log(JSON.stringify(parsed, null, 2));
