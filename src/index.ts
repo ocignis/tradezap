@@ -5,6 +5,7 @@ const cli = cac('TradeZap');
 cli.option('-c, --config <filename>', 'Custom config file', {
   default: 'tradezap.config.ts',
 });
+
 cli.option('-o, --out <dir>', 'Output directory', {
   default: 'tradezap-data',
 });
