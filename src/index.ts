@@ -2,8 +2,11 @@ import { cac } from 'cac';
 
 const cli = cac('TradeZap');
 
-cli.option('-c, --config <filename>', 'Custom config file (defaults to tradezap.config.js)', {
+cli.option('-c, --config <filename>', 'Custom config file', {
   default: 'tradezap.config.ts',
+});
+cli.option('-o, --out <dir>', 'Output directory', {
+  default: 'tradezap-data',
 });
 
 cli.help();
