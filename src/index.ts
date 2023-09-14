@@ -1,10 +1,13 @@
 import { cac } from 'cac';
 
-const cli = cac();
+const cli = cac('TradeZap');
 
-cli.option('--type <type>', 'Choose a project type', {
-  default: 'node',
+cli.option('-c, --config <filename>', 'Custom config file (defaults to tradezap.config.js)', {
+  default: 'tradezap.config.ts',
 });
+
+cli.help();
+cli.version('0.0.0');
 
 const parsed = cli.parse();
 
