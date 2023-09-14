@@ -2,7 +2,7 @@
 
 [![CI][ci-badge]][ci-url]
 
-⚡ Get trading data in a zap
+_⚡ Get trading data in a zap_
 
 ## Requirements
 
