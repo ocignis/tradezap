@@ -1,5 +1,5 @@
 await Bun.build({
-  entrypoints: ['./src/index.tsx'],
+  entrypoints: ['./src/index.ts'],
   outdir: './dist',
   target: 'bun',
   format: 'esm',
