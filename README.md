@@ -19,5 +19,5 @@ _Easily set up a local development environment_
 
 Contributions are always welcome! If you have any ideas, suggestions, fixes, feel free to contribute.
 
-[ci-badge]: https://github.com/ocignis/tradezap/actions/workflows/ci.yml/badge.svg
-[ci-url]: https://github.com/ocignis/tradezap/actions/workflows/ci.yml
+[ci-badge]: https://github.com/ocignis/tradezap/actions/workflows/CI.yml/badge.svg
+[ci-url]: https://github.com/ocignis/tradezap/actions/workflows/CI.yml
