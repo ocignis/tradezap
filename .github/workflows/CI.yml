@@ -23,23 +23,23 @@ jobs:
         run: bun run build
 
   lint:
-      name: Lint ✅
-      runs-on: ubuntu-latest
+    name: Lint ✅
+    runs-on: ubuntu-latest
 
-      steps:
-        - name: Checkout 🛎️
-          uses: actions/checkout@v4
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
 
-        - name: Setup Bun ⚙️
-          uses: oven-sh/setup-bun@v1
-          with:
-            bun-version: '1.0.1'
+      - name: Setup Bun ⚙️
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: '1.0.1'
 
-        - name: Install dependencies 🔧
-          run: bun i
+      - name: Install dependencies 🔧
+        run: bun i
 
-        - name: Lint ✅
-          run: bun run lint
+      - name: Lint ✅
+        run: bun run lint
 
   tsc:
     name: TypeScript Compiler 🔎
@@ -62,7 +62,6 @@ jobs:
 
   test:
     name: Test 🧪
-    needs: build
     runs-on: ubuntu-latest
 
     steps:
