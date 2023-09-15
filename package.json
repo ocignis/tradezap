@@ -14,7 +14,7 @@
   "scripts": {
     "prepare": "husky install",
     "build": "rm -rf dist && bun run build.ts",
-    "dev": "bun run ./src/index.ts --config npm-latest/tradezap.config.ts --out npm-latest/tradezap-data",
+    "dev": "bun --watch ./src/index.ts --config npm-latest/tradezap.config.ts --out npm-latest/tradezap-data",
     "lint": "eslint --max-warnings 0 .",
     "lint-fix": "eslint --fix .",
     "lint-staged-husky": "lint-staged",
