@@ -81,3 +81,29 @@ jobs:
 
       - name: Test 🧪
         run: bun run test-coverage
+
+  deploy:
+    name: Deploy 🚀
+    needs: [build, lint, tsc, test]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      - name: Setup Bun ⚙️
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: ${{ env.BUN_VERSION }}
+
+      - name: Install dependencies 🔧
+        run: bun i
+
+      - name: Build 🏗️
+        run: bun run build
+
+      - name: Release 🚀
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: bun run semantic-release
