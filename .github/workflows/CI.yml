@@ -82,8 +82,8 @@ jobs:
       - name: Test 🧪
         run: bun run test-coverage
 
-  deploy:
-    name: Deploy 🚀
+  npm-release:
+    name: npm release 📦
     needs: [build, lint, tsc, test]
     runs-on: ubuntu-latest
 
