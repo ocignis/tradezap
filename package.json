@@ -1,6 +1,6 @@
 {
   "name": "tradezap",
-  "description": "CLI tool for downloading trading data",
+  "description": "Get trading data in a zap",
   "version": "0.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
