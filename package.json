@@ -1,6 +1,6 @@
 {
   "name": "tradezap",
-  "description": "Get tradingr data in a zap",
+  "description": "Get trading data in a zap",
   "version": "0.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
