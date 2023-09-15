@@ -22,6 +22,6 @@
     "pretty": true,
     "types": ["bun-types"]
   },
-  "include": [".", ".eslintrc.js", ".commitlintrc.ts"],
+  "include": [".", ".eslintrc.cjs", ".commitlintrc.cts"],
   "exclude": ["dist", "node_modules"]
 }
