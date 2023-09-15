@@ -11,16 +11,25 @@ _⚡ Get trading data in a zap_
 
 - [Bun v1.0.1+](https://bun.sh)
 
-## Running
+## Usage
 
-_Easily set up a local development environment_
+- In file `tradezap.config.ts` define which trading data you want.
+- Run `bunx tradezap` ⚡
+- Trading data are ready to use in `tradezap-data` folder 📈
 
+## Development
+
+_Easily set up a local development environment!_
+
+- clone
 - `bun i`
 - `bun run dev`
 
+_Start coding!_
+
 ## Contributing
 
-Contributions are always welcome! If you have any ideas, suggestions, fixes, feel free to contribute.
+All contributions are welcome!
 
 [npm-url]: https://www.npmjs.com/package/tradezap
 [npm-badge]: https://img.shields.io/npm/v/tradezap.svg
