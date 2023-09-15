@@ -14,6 +14,7 @@
   "scripts": {
     "prepare": "husky install",
     "build": "rm -rf dist && bun run build.ts",
+    "dev": "bun run ./src/index.ts --config npm-latest/tradezap.config.ts --out npm-latest/tradezap-data",
     "lint": "eslint --max-warnings 0 .",
     "lint-fix": "eslint --fix .",
     "lint-staged-husky": "lint-staged",
@@ -24,7 +25,6 @@
     "test-watch": "bun test --watch",
     "test-coverage": "bun test --coverage",
     "semantic-release": "semantic-release --branches main",
-    "tradezap-latest": "bunx tradezap --config tradezap.ts",
     "clean": "rm -rf node_modules coverage dist compiled"
   },
   "dependencies": {

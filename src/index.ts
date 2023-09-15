@@ -2,7 +2,7 @@ import { cac } from 'cac';
 
 console.log('##### ⚡ TradeZap #####');
 
-const cli = cac('TradeZap');
+const cli = cac('tradezap');
 
 cli.option('-c, --config <filename>', 'Custom config file', {
   default: 'tradezap.config.ts',
