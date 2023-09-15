@@ -16,7 +16,7 @@ _⚡ Get trading data in a zap_
 _Easily set up a local development environment_
 
 - `bun i`
-- `bun build`
+- `bun run dev`
 
 ## Contributing
 
