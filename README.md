@@ -9,7 +9,7 @@ _⚡ Get trading data in a zap_
 
 ## Requirements
 
-[Bun v1.0.1+](https://bun.sh)
+[Bun v1.0.2+](https://bun.sh)
 
 ## Usage
 
