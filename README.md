@@ -13,7 +13,7 @@ _⚡ Get trading data in a zap_
 
 ## Usage
 
-- In file `tradezap.config.ts` define which trading data you want
+- Define which trading data you want in `tradezap.config.ts` file 
 - Run `bunx tradezap`
 - Trading data are ready to use 📈
 
