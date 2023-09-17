@@ -101,6 +101,9 @@ jobs:
         run: bun i
 
       - name: Version Info 💉
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           bun run semantic-release --dryRun | grep -oP 'Published release \K.*? '
           echo "export const VERSION_INFO = '$COMMIT';" > $FILE_PATH_VERSION_INFO
