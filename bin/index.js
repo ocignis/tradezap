@@ -1,3 +1,3 @@
 #!/usr/bin/env node
 
-console.log('test 123');
+import '../dist/index.js';

@@ -23,5 +23,5 @@
     "types": ["bun-types"]
   },
   "include": [".", ".eslintrc.cjs", ".commitlintrc.cts"],
-  "exclude": ["dist", "node_modules"]
+  "exclude": ["bin", "dist", "node_modules"]
 }

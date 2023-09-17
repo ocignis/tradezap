@@ -42,7 +42,7 @@ const eslintConfig = {
   },
 
   // ESlint default behavior ignores file/folders starting with "." - https://github.com/eslint/eslint/issues/10341
-  ignorePatterns: ['!.*', 'dist', 'node_modules'],
+  ignorePatterns: ['!.*', 'bin', 'dist', 'node_modules'],
 
   settings: {
     'import/resolver': {
