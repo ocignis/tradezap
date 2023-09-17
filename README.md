@@ -7,17 +7,15 @@
 
 _⚡ Get trading data in a zap_
 
-## Requirements
-
-[Bun v1.0.2+](https://bun.sh)
-
 ## Usage
 
-- Define which trading data you want in `tradezap.config.ts` file 
+- Define which trading data you want in `tradezap.config.ts` file
 - Run `bunx tradezap`
 - Trading data are ready to use 📈
 
 ## Development
+
+Requirement - [Bun v1.0.2+](https://bun.sh)
 
 _Easily set up a local development environment!_
 
