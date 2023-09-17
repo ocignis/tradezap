@@ -11,7 +11,7 @@
     "README.md"
   ],
   "bin": {
-    "tradezap": "./dist/index.js"
+    "tradezap": "./bin/index.js"
   },
   "scripts": {
     "prepare": "husky install",
