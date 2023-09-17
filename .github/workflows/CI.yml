@@ -4,6 +4,7 @@ on: push
 
 env:
   BUN_VERSION: '1.0.2'
+  FILE_PATH_VERSION_INFO: ./src/utils/version-info.ts
 
 jobs:
   build:
@@ -98,6 +99,11 @@ jobs:
 
       - name: Install dependencies 🔧
         run: bun i
+
+      - name: Version Info 💉
+        run: |
+          bun run semantic-release --dryRun | grep -oP 'Published release \K.*? '
+          echo "export const VERSION_INFO = '$COMMIT';" > $FILE_PATH_VERSION_INFO
 
       - name: Build 🏗️
         run: bun run build
