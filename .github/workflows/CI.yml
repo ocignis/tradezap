@@ -107,6 +107,7 @@ jobs:
         run: |
           bun run semantic-release --dryRun | grep -oP 'Published release \K.*? '
           echo "export const VERSION_INFO = '$COMMIT';" > $FILE_PATH_VERSION_INFO
+          cat $FILE_PATH_VERSION_INFO
 
       - name: Build 🏗️
         run: bun run build
