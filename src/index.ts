@@ -1,6 +1,6 @@
 // import { cac } from 'cac';
 
-// import {} from 'tradezap';
+// import { TEST_VAR } from 'tradezap';
 
 // import { run } from 'demozap';
 // run();
@@ -8,6 +8,8 @@
 console.log('##### ⚡ TradeZap #####');
 
 export const TEST_VAR = 'test';
+
+console.log('🔎 Log ~ TEST_VAR:', TEST_VAR);
 
 // const cli = cac('tradezap');
 
