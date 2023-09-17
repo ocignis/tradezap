@@ -19,8 +19,8 @@ cli.version(VERSION_INFO);
 
 cli.parse();
 
-const parsed = cli.parse();
-console.log(JSON.stringify(parsed, null, 2));
+// const parsed = cli.parse();
+// console.log(JSON.stringify(parsed, null, 2));
 
 export const TEST_VAR = 'test';
 console.log('🔎 Log ~ TEST_VAR:', TEST_VAR);
