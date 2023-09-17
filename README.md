@@ -7,6 +7,8 @@
 
 _⚡ Get trading data in a zap_
 
+TradeZap CLI tool easily keeps your trading data up to date 💪
+
 ## Usage
 
 - Define which trading data you want in `tradezap.config.ts` file
