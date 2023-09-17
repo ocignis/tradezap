@@ -7,7 +7,7 @@
 
 _⚡ Get trading data in a zap_
 
-TradeZap CLI tool easily keeps your trading data up to date 💪
+TradeZap CLI tool helps you keep trading data easily up to date.
 
 ## Usage
 
