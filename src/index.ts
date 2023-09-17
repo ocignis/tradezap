@@ -1,5 +1,7 @@
 import { cac } from 'cac';
 
+import { VERSION_INFO } from 'utils/version-info';
+
 console.log('##### ⚡ TradeZap #####');
 
 const cli = cac('tradezap');
@@ -13,7 +15,7 @@ cli.option('-o, --out <dir>', 'Output directory', {
 });
 
 cli.help();
-cli.version('0.0.0');
+cli.version(VERSION_INFO);
 
 cli.parse();
 
