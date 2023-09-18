@@ -107,7 +107,7 @@ jobs:
         run: |
           VERSION_SPACES=$(bun run semantic-release --dryRun | grep -oP 'Published release \K.*? ')
           VERSION="${VERSION_SPACES// /}"
-          echo "export const VERSION_INFO = '$VERSION';" > $FILE_PATH_VERSION_INFO
+          echo "export const VERSION_INFO = v'$VERSION';" > $FILE_PATH_VERSION_INFO
           cat $FILE_PATH_VERSION_INFO
 
       - name: Build 🏗️

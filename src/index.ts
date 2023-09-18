@@ -2,7 +2,7 @@ import { cac } from 'cac';
 
 import { VERSION_INFO } from 'utils/version-info';
 
-console.log(`##### ⚡ TradeZap v${VERSION_INFO} #####`);
+console.log(`##### ⚡ TradeZap ${VERSION_INFO} #####`);
 
 const cli = cac('tradezap');
 
