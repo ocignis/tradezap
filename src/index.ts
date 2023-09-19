@@ -1,8 +1,9 @@
 import { cac } from 'cac';
 
+import { logError, logInfo, logSuccess } from 'utils/log';
 import { VERSION_INFO } from 'utils/version-info';
 
-console.log(`##### ⚡ TradeZap ${VERSION_INFO} #####`);
+logInfo(`##### ⚡ TradeZap ${VERSION_INFO} #####`);
 
 const cli = cac('tradezap');
 
@@ -19,8 +20,14 @@ cli.version(VERSION_INFO);
 
 cli.parse();
 
-// const parsed = cli.parse();
-// console.log(JSON.stringify(parsed, null, 2));
-
 export const TEST_VAR = 'test';
-console.log('🔎 Log ~ TEST_VAR:', TEST_VAR);
+
+try {
+  logInfo('Acquiring trading data...');
+
+  logInfo(`Created ${5} data`);
+
+  logSuccess('Completed!');
+} catch (err) {
+  logError(`Error occurred: ${err as string}`);
+}
