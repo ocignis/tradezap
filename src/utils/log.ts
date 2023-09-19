@@ -1,7 +1,13 @@
 import chalk from 'chalk';
 
-const log = console.log;
+const consoleLog = console.log;
 
-export const logInfo = (message: string) => log(chalk.blue(message));
-export const logSuccess = (message: string) => log(chalk.bold.green(message));
-export const logError = (message: string) => log(chalk.red(message));
+const logInfo = (message: string) => consoleLog(chalk.blue(message));
+const logSuccess = (message: string) => consoleLog(chalk.bold.green(message));
+const logError = (message: string) => consoleLog(chalk.red(message));
+
+export const log = {
+  info: logInfo,
+  success: logSuccess,
+  error: logError,
+};
