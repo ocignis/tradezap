@@ -9,6 +9,6 @@ await Bun.build({
   sourcemap: 'none',
   external: [],
   // minify: true, When targeting 'bun', identifiers will be minified by default.
-  minify: false,
+  minify: true,
   plugins: [dts()],
 });
