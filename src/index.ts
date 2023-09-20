@@ -19,10 +19,8 @@ cli.version(VERSION_INFO);
 
 cli.parse();
 
-export const TEST_VAR = 'test';
-
 try {
-  log.info('Acquiring trading data...');
+  log.info('Downloading trading data...');
 
   log.info(`Created ${5} data`);
 
