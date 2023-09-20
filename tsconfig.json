@@ -19,6 +19,8 @@
     "allowJs": true,
     "strict": true,
     "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "pretty": true,
     "types": ["bun-types"]
   },
