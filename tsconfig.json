@@ -18,7 +18,7 @@
     "forceConsistentCasingInFileNames": true,
     "allowJs": true,
     "strict": true,
-    "strictNullChecks": true,
+    "noUncheckedIndexedAccess": true,
     "pretty": true,
     "types": ["bun-types"]
   },
