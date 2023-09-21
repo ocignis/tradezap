@@ -41,6 +41,15 @@ const eslintConfig = {
     ],
   },
 
+  overrides: [
+    {
+      files: ['example/**/*'],
+      rules: {
+        'import/no-default-export': 'off',
+      },
+    },
+  ],
+
   // ESlint default behavior ignores file/folders starting with "." - https://github.com/eslint/eslint/issues/10341
   ignorePatterns: ['!.*', 'bin', 'dist', 'node_modules'],
 
