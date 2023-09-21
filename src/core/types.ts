@@ -5,10 +5,10 @@
  */
 export type TradingPair = `${string}-${string}`;
 
-const YEARS = [2017, 2018, 2019, 2020, 2021, 2022, 2023] as const;
+export const YEARS = [2017, 2018, 2019, 2020, 2021, 2022, 2023] as const;
 type Year = (typeof YEARS)[number];
 
-const MONTHS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] as const;
+export const MONTHS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] as const;
 type Months = (typeof MONTHS)[number];
 
 type TimeSpan = {
