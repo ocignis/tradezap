@@ -15,6 +15,12 @@ TradeZap CLI tool keeps your trading data easily up to date.
 - Run `bunx tradezap` or `npx tradezap`
 - Trading data are ready to use 📈
 
+## Data Providers
+
+Currently supported data providers:
+
+- [Binance](https://www.binance.com/)
+
 ## Development
 
 Requirement - [Bun v1.0.2+](https://bun.sh)
