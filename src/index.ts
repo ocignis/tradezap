@@ -1,8 +1,6 @@
 import { cliParse } from 'cliParse';
-import { downloadData } from 'core';
+import { downloadData } from 'core/binance';
 import { log, VERSION_INFO } from 'utils';
-
-export { YEARS, MONTHS, TradingPair, DatasetBinance } from 'core/types';
 
 log.info(`##### ⚡ TradeZap ${VERSION_INFO} #####`);
 

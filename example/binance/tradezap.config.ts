@@ -1,6 +1,6 @@
-import { DatasetBinance } from 'core/types';
+import { DatasetsBinance } from 'core/binance/types';
 
-const DATASET_BINANCE: DatasetBinance = [
+const DATASETS_BINANCE: DatasetsBinance = [
   {
     tradingPair: 'BTC-BUSD',
     timeSpans: [
@@ -29,4 +29,4 @@ const DATASET_BINANCE: DatasetBinance = [
   },
 ];
 
-export default DATASET_BINANCE;
+export default DATASETS_BINANCE;

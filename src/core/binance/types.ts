@@ -20,7 +20,7 @@ type TimeSpan = {
  * Binance data provider (single set)
  * @link https://data.binance.vision/
  */
-type DatasetBinanceSingle = {
+type DatasetBinance = {
   tradingPair: TradingPair;
   timeSpans: ReadonlyArray<TimeSpan>;
 };
@@ -29,4 +29,4 @@ type DatasetBinanceSingle = {
  * Binance data provider
  * @link https://data.binance.vision/
  */
-export type DatasetBinance = ReadonlyArray<DatasetBinanceSingle>;
+export type DatasetsBinance = ReadonlyArray<DatasetBinance>;
