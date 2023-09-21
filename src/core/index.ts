@@ -1,12 +1,9 @@
 import { log, calculateTimeSpan } from 'utils';
 
-import { initOutputDirectory } from './01-initOutputDirectory';
+import TemporaryDefaultImport from '../../example/tradezap.config';
 
-// import { DOWNLOAD_SYMBOL_PAIRS } from './DOWNLOAD_SYMBOL_PAIRS';
-// import { downloadTradesFiles } from './downloadTradesFiles';
-// import { initRootFolder } from './initRootFolder';
-// import { makeTradesDataDownloadInfo } from './makeTradesDataDownloadInfo';
-// import { unzipTradesFiles } from './unzipTradesFiles';
+import { initOutputDirectory } from './01-initOutputDirectory';
+import { createDownloadInfo } from './02-createDownloadInfo';
 
 type DownloadDataParams = {
   pathConfigFile: string;
@@ -17,9 +14,11 @@ export const downloadData = async ({ pathConfigFile, pathOutputDirectory }: Down
   log.info('Downloading trading data...');
   const startTime = performance.now();
 
-  console.log('🔎 Log ~ downloadData ~ pathConfigFile:', pathConfigFile);
-
   await initOutputDirectory(pathOutputDirectory);
+
+  console.log('🔎 Log ~ downloadData ~ pathConfigFile:', pathConfigFile);
+  const tradesDataDownloadInfo = createDownloadInfo({ datasetBinance: TemporaryDefaultImport, pathOutputDirectory });
+  console.log('🔎 Log ~ downloadData ~ tradesDataDownloadInfo:', tradesDataDownloadInfo);
 
   // const tradesDataDownloadInfo = makeTradesDataDownloadInfo({ downloadSymbolPairs: DOWNLOAD_SYMBOL_PAIRS });
   // const makeTradesDataDownloadInfoTime = performance.now();
