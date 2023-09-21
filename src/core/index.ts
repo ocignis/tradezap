@@ -1,5 +1,7 @@
 import { log, calculateTimeSpan } from 'utils';
 
+import { initOutputDirectory } from './01-initOutputDirectory';
+
 // import { DOWNLOAD_SYMBOL_PAIRS } from './DOWNLOAD_SYMBOL_PAIRS';
 // import { downloadTradesFiles } from './downloadTradesFiles';
 // import { initRootFolder } from './initRootFolder';
@@ -11,17 +13,13 @@ type DownloadDataParams = {
   pathOutputDirectory: string;
 };
 
-export const downloadData = ({ pathConfigFile, pathOutputDirectory }: DownloadDataParams) => {
+export const downloadData = async ({ pathConfigFile, pathOutputDirectory }: DownloadDataParams) => {
   log.info('Downloading trading data...');
   const startTime = performance.now();
 
   console.log('🔎 Log ~ downloadData ~ pathConfigFile:', pathConfigFile);
 
-  console.log('🔎 Log ~ downloadData ~ pathOutputDirectory:', pathOutputDirectory);
-
-  // await initRootFolder();
-  // const initRootFolderTime = performance.now();
-  // logger.info(`initRootFolder - ${calculateTimeSpan({ startTime, endTime: initRootFolderTime })}`);
+  await initOutputDirectory(pathOutputDirectory);
 
   // const tradesDataDownloadInfo = makeTradesDataDownloadInfo({ downloadSymbolPairs: DOWNLOAD_SYMBOL_PAIRS });
   // const makeTradesDataDownloadInfoTime = performance.now();
