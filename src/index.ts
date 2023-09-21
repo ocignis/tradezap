@@ -7,7 +7,7 @@ log.info(`##### ⚡ TradeZap ${VERSION_INFO} #####`);
 try {
   const { pathConfigFile, pathOutputDirectory } = cliParse();
 
-  downloadData({ pathConfigFile, pathOutputDirectory });
+  await downloadData({ pathConfigFile, pathOutputDirectory });
 } catch (err) {
   log.error(`Error occurred: ${err as string}`);
 }
