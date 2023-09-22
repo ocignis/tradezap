@@ -13,9 +13,9 @@ export const downloadDatasets = async ({ datasetsDownloadInfo }: DownloadDataset
   let numOfDatasetsDownloaded = 0;
 
   const tradesFilePromises = datasetsDownloadInfo.map(async ({ dataUrl, targetPath, targetFolder }) => {
-    const result = await fetch(dataUrl);
+    const file = await fetch(dataUrl);
     await fs.ensureDir(targetFolder);
-    await Bun.write(targetPath, result);
+    await Bun.write(targetPath, file);
 
     numOfDatasetsDownloaded++;
 
