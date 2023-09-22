@@ -10,7 +10,7 @@ const DATASETS_BINANCE: DatasetsBinance = [
       },
       {
         year: [2022],
-        months: [9, 10, 11, 12],
+        months: [10, 11, 12],
       },
       {
         year: [2021],
@@ -23,7 +23,7 @@ const DATASETS_BINANCE: DatasetsBinance = [
     timeSpans: [
       {
         year: [2023],
-        months: [9, 10, 11],
+        months: [4, 11],
       },
     ],
   },
