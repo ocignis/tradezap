@@ -9,6 +9,7 @@ type DatasetDownloadInfo = {
   datasetUrl: string;
   targetPath: string;
   targetFolder: string;
+  datasetFilename: string;
 };
 
 export type DatasetsDownloadInfo = ReadonlyArray<DatasetDownloadInfo>;
@@ -26,15 +27,15 @@ export const createDatasetsDownloadInfo = ({
       months.map((month) => {
         const monthFormatted = String(month).padStart(2, '0');
 
-        const dataFileName = `${tradingPairFormatted}-trades-${year.at(0)}-${monthFormatted}.zip`;
+        const datasetFilename = `${tradingPairFormatted}-trades-${year.at(0)}-${monthFormatted}.zip`;
 
-        const datasetUrl = `${BASE_URL}/${tradingPairFormatted}/${dataFileName}`;
+        const datasetUrl = `${BASE_URL}/${tradingPairFormatted}/${datasetFilename}`;
 
-        const targetPath = `${pathOutputDirectory}/${tradingPairFormatted}/${dataFileName}`;
+        const targetPath = `${pathOutputDirectory}/${tradingPairFormatted}/${datasetFilename}`;
 
         const targetFolder = `${pathOutputDirectory}/${tradingPairFormatted}`;
 
-        const datasetDownloadInfo: DatasetDownloadInfo = { datasetUrl, targetPath, targetFolder };
+        const datasetDownloadInfo: DatasetDownloadInfo = { datasetUrl, targetPath, targetFolder, datasetFilename };
 
         return datasetDownloadInfo;
       }),
@@ -42,6 +43,8 @@ export const createDatasetsDownloadInfo = ({
   });
 
   const datasetsDownloadInfo = datasetsDownloadInfoNested.flat(3);
+
+  console.log('🔎 Log ~ datasetsDownloadInfo:', datasetsDownloadInfo);
 
   return datasetsDownloadInfo;
 };
