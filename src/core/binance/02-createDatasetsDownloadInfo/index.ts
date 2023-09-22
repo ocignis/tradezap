@@ -1,11 +1,11 @@
 import { DatasetsBinance } from '../types';
 
-type CreateDownloadInfoParams = {
-  datasetsBinance: DatasetsBinance;
+type CreateDatasetDownloadInfoParams = {
+  datasets: DatasetsBinance;
   pathOutputDirectory: string;
 };
 
-export type CreateDownloadInfoReturn = ReadonlyArray<{
+export type DatasetsDownloadInfo = ReadonlyArray<{
   dataUrl: string;
   targetPath: string;
   targetFolder: string;
@@ -13,11 +13,11 @@ export type CreateDownloadInfoReturn = ReadonlyArray<{
 
 const BASE_URL = 'https://data.binance.vision/data/spot/monthly/trades';
 
-export const createDownloadInfo = ({
-  datasetsBinance,
+export const createDatasetsDownloadInfo = ({
+  datasets,
   pathOutputDirectory,
-}: CreateDownloadInfoParams): CreateDownloadInfoReturn => {
-  const dataUrlsNested = datasetsBinance.map(({ tradingPair, timeSpans }) => {
+}: CreateDatasetDownloadInfoParams): DatasetsDownloadInfo => {
+  const dataUrlsNested = datasets.map(({ tradingPair, timeSpans }) => {
     const tradingPairFormatted = tradingPair.replace('-', '');
 
     return timeSpans.map(({ year, months }) =>
