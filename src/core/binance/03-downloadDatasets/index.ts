@@ -1,5 +1,3 @@
-// import { Stream } from 'stream';
-
 import fs from 'fs-extra';
 
 import { calculateTimeSpan, log } from 'utils';
@@ -19,19 +17,9 @@ export const downloadDatasets = async ({ datasetsDownloadInfo }: DownloadDataset
     await fs.ensureDir(targetFolder);
     await Bun.write(targetPath, result);
 
-    // const { data: fileData } = await axios.request<Stream>({
-    //   method: 'GET',
-    //   url: dataUrl,
-    //   responseType: 'stream',
-    // });
-
-    // await fs.ensureDir(targetFolder);
-
-    // await createFile(fileData, targetPath);
-
     numOfDatasetsDownloaded++;
 
-    log.info(`Downloading - ${datasetsDownloadInfo.length}/${numOfDatasetsDownloaded}`);
+    log.info(`Downloading - ${numOfDatasetsDownloaded}/${datasetsDownloadInfo.length}`);
   });
 
   await Promise.all(tradesFilePromises);
@@ -39,13 +27,3 @@ export const downloadDatasets = async ({ datasetsDownloadInfo }: DownloadDataset
   const endTime = performance.now();
   log.success(`Downloaded all datasets (${calculateTimeSpan({ startTime, endTime })})`);
 };
-
-// const createFile = async (fileData: Stream, targetPath: string) => {
-//   return new Promise<void>((resolve) => {
-//     const writer = fs.createWriteStream(targetPath);
-
-//     fileData.pipe(writer);
-
-//     writer.on('finish', resolve);
-//   });
-// };
