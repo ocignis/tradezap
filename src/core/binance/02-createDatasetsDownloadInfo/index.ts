@@ -5,11 +5,13 @@ type CreateDatasetDownloadInfoParams = {
   pathOutputDirectory: string;
 };
 
-export type DatasetsDownloadInfo = ReadonlyArray<{
-  dataUrl: string;
+type DatasetDownloadInfo = {
+  datasetUrl: string;
   targetPath: string;
   targetFolder: string;
-}>;
+};
+
+export type DatasetsDownloadInfo = ReadonlyArray<DatasetDownloadInfo>;
 
 const BASE_URL = 'https://data.binance.vision/data/spot/monthly/trades';
 
@@ -17,7 +19,7 @@ export const createDatasetsDownloadInfo = ({
   datasets,
   pathOutputDirectory,
 }: CreateDatasetDownloadInfoParams): DatasetsDownloadInfo => {
-  const dataUrlsNested = datasets.map(({ tradingPair, timeSpans }) => {
+  const datasetsDownloadInfoNested = datasets.map(({ tradingPair, timeSpans }) => {
     const tradingPairFormatted = tradingPair.replace('-', '');
 
     return timeSpans.map(({ year, months }) =>
@@ -26,18 +28,20 @@ export const createDatasetsDownloadInfo = ({
 
         const dataFileName = `${tradingPairFormatted}-trades-${year.at(0)}-${monthFormatted}.zip`;
 
-        const dataUrl = `${BASE_URL}/${tradingPairFormatted}/${dataFileName}`;
+        const datasetUrl = `${BASE_URL}/${tradingPairFormatted}/${dataFileName}`;
 
         const targetPath = `${pathOutputDirectory}/${tradingPairFormatted}/${dataFileName}`;
 
         const targetFolder = `${pathOutputDirectory}/${tradingPairFormatted}`;
 
-        return { dataUrl, targetPath, targetFolder };
+        const datasetDownloadInfo: DatasetDownloadInfo = { datasetUrl, targetPath, targetFolder };
+
+        return datasetDownloadInfo;
       }),
     );
   });
 
-  const dataUrls = dataUrlsNested.flat(3);
+  const datasetsDownloadInfo = datasetsDownloadInfoNested.flat(3);
 
-  return dataUrls;
+  return datasetsDownloadInfo;
 };
