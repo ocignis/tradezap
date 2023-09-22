@@ -4,6 +4,7 @@ import TemporaryDefaultImport from '../../../example/binance/tradezap.config';
 
 import { initOutputDirectory } from './01-initOutputDirectory';
 import { createDatasetsDownloadInfo } from './02-createDatasetsDownloadInfo';
+import { downloadDatasets } from './03-downloadDatasets';
 
 type DownloadDataParams = {
   pathConfigFile: string;
@@ -11,19 +12,19 @@ type DownloadDataParams = {
 };
 
 export const downloadData = async ({ pathConfigFile, pathOutputDirectory }: DownloadDataParams) => {
-  log.info('Downloading trading data...');
   const startTime = performance.now();
 
   await initOutputDirectory(pathOutputDirectory);
 
+  // TODO: Extract default export from config file
   console.log('🔎 Log ~ downloadData ~ pathConfigFile:', pathConfigFile);
+
   const datasetsDownloadInfo = createDatasetsDownloadInfo({
     datasets: TemporaryDefaultImport,
     pathOutputDirectory,
   });
-  console.log('🔎 Log ~ downloadData ~ tradesDataDownloadInfo:', datasetsDownloadInfo);
 
-  // await downloadDatasets({ datasetsDownloadInfo });
+  await downloadDatasets({ datasetsDownloadInfo });
 
   // const tradesDataDownloadInfo = makeTradesDataDownloadInfo({ downloadSymbolPairs: DOWNLOAD_SYMBOL_PAIRS });
   // const makeTradesDataDownloadInfoTime = performance.now();
