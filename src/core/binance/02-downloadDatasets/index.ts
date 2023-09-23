@@ -2,7 +2,7 @@ import { mkdir } from 'fs/promises';
 
 import { calculateTimeSpan, log } from 'utils';
 
-import { DatasetsDownloadInfo } from '../02-createDatasetsDownloadInfo';
+import { DatasetsDownloadInfo } from '../01-createDatasetsDownloadInfo';
 
 type DownloadDatasetsParams = {
   datasetsDownloadInfo: DatasetsDownloadInfo;
