@@ -1,4 +1,4 @@
-import fs from 'fs-extra';
+import { mkdir } from 'fs/promises';
 
 import { calculateTimeSpan, log } from 'utils';
 
@@ -14,7 +14,7 @@ export const downloadDatasets = async ({ datasetsDownloadInfo }: DownloadDataset
 
   const datasetsPromises = datasetsDownloadInfo.map(async ({ datasetUrl, targetPath, targetFolder }) => {
     const file = await fetch(datasetUrl);
-    await fs.ensureDir(targetFolder);
+    await mkdir(targetFolder, { recursive: true });
     await Bun.write(targetPath, file);
 
     numOfDatasetsDownloaded++;
