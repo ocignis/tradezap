@@ -2,7 +2,7 @@ import { mkdir } from 'fs/promises';
 
 import AdmZip from 'adm-zip';
 
-import { calculateTimeSpan, log } from 'utils';
+import { log } from 'utils';
 
 import { DatasetsInfo } from '../01-createDatasetsInfo';
 
@@ -11,7 +11,6 @@ type ProcessDatasetsParams = {
 };
 
 export const processDatasets = async ({ datasetsInfo }: ProcessDatasetsParams): Promise<void> => {
-  const startTime = performance.now();
   let numOfDatasetsDownloaded = 0;
 
   const datasetsPromises = datasetsInfo.map(async ({ datasetUrl, targetPath, targetFolder }) => {
@@ -32,7 +31,4 @@ export const processDatasets = async ({ datasetsInfo }: ProcessDatasetsParams): 
   });
 
   await Promise.all(datasetsPromises);
-
-  const endTime = performance.now();
-  log.success(`Download complete (${calculateTimeSpan({ startTime, endTime })})`);
 };
