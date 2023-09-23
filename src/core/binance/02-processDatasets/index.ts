@@ -13,7 +13,7 @@ type ProcessDatasetsParams = {
 export const processDatasets = async ({ datasetsInfo }: ProcessDatasetsParams): Promise<void> => {
   let numOfDatasetsDownloaded = 0;
 
-  const datasetsPromises = datasetsInfo.map(async ({ datasetUrl, targetPath, targetFolder }) => {
+  const processingDatasetsPromises = datasetsInfo.map(async ({ datasetUrl, targetPath, targetFolder }) => {
     const file = await fetch(datasetUrl);
     await mkdir(targetFolder, { recursive: true });
     await Bun.write(targetPath, file);
@@ -27,8 +27,8 @@ export const processDatasets = async ({ datasetsInfo }: ProcessDatasetsParams): 
 
     numOfDatasetsDownloaded++;
 
-    log.info(`Downloading... ${numOfDatasetsDownloaded}/${datasetsInfo.length}`);
+    log.info(`Processing... ${numOfDatasetsDownloaded}/${datasetsInfo.length}`);
   });
 
-  await Promise.all(datasetsPromises);
+  await Promise.all(processingDatasetsPromises);
 };
