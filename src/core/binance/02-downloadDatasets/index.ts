@@ -1,5 +1,7 @@
 import { mkdir } from 'fs/promises';
 
+import AdmZip from 'adm-zip';
+
 import { calculateTimeSpan, log } from 'utils';
 
 import { DatasetsDownloadInfo } from '../01-createDatasetsDownloadInfo';
@@ -16,6 +18,13 @@ export const downloadDatasets = async ({ datasetsDownloadInfo }: DownloadDataset
     const file = await fetch(datasetUrl);
     await mkdir(targetFolder, { recursive: true });
     await Bun.write(targetPath, file);
+
+    const admZip = new AdmZip(targetPath);
+    // const admZip = new AdmZip(file);
+
+    admZip.extractAllTo(targetFolder, true);
+
+    // await fs.remove(targetPath);
 
     numOfDatasetsDownloaded++;
 
