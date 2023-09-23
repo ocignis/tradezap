@@ -4,17 +4,17 @@ import AdmZip from 'adm-zip';
 
 import { calculateTimeSpan, log } from 'utils';
 
-import { DatasetsDownloadInfo } from '../01-createDatasetsDownloadInfo';
+import { DatasetsInfo } from '../01-createDatasetsInfo';
 
-type DownloadDatasetsParams = {
-  datasetsDownloadInfo: DatasetsDownloadInfo;
+type ProcessDatasetsParams = {
+  datasetsInfo: DatasetsInfo;
 };
 
-export const downloadDatasets = async ({ datasetsDownloadInfo }: DownloadDatasetsParams): Promise<void> => {
+export const processDatasets = async ({ datasetsInfo }: ProcessDatasetsParams): Promise<void> => {
   const startTime = performance.now();
   let numOfDatasetsDownloaded = 0;
 
-  const datasetsPromises = datasetsDownloadInfo.map(async ({ datasetUrl, targetPath, targetFolder }) => {
+  const datasetsPromises = datasetsInfo.map(async ({ datasetUrl, targetPath, targetFolder }) => {
     const file = await fetch(datasetUrl);
     await mkdir(targetFolder, { recursive: true });
     await Bun.write(targetPath, file);
@@ -28,7 +28,7 @@ export const downloadDatasets = async ({ datasetsDownloadInfo }: DownloadDataset
 
     numOfDatasetsDownloaded++;
 
-    log.info(`Downloading... ${numOfDatasetsDownloaded}/${datasetsDownloadInfo.length}`);
+    log.info(`Downloading... ${numOfDatasetsDownloaded}/${datasetsInfo.length}`);
   });
 
   await Promise.all(datasetsPromises);

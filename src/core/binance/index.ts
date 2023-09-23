@@ -2,8 +2,8 @@ import { log, calculateTimeSpan } from 'utils';
 
 import TemporaryDefaultImport from '../../../example/binance/tradezap.config';
 
-import { createDatasetsDownloadInfo } from './01-createDatasetsDownloadInfo';
-import { downloadDatasets } from './02-downloadDatasets';
+import { createDatasetsInfo } from './01-createDatasetsInfo';
+import { processDatasets } from './02-processDatasets';
 
 type DownloadDataParams = {
   pathConfigFile: string;
@@ -16,16 +16,14 @@ export const downloadData = async ({ pathConfigFile, pathOutputDirectory }: Down
   // TODO: Extract default export from config file
   console.log('🔎 Log ~ downloadData ~ pathConfigFile:', pathConfigFile);
 
-  const datasetsDownloadInfo = createDatasetsDownloadInfo({
+  const datasetsInfo = createDatasetsInfo({
     datasets: TemporaryDefaultImport,
     pathOutputDirectory,
   });
 
-  console.log('🔎 Log ~ downloadData ~ datasetsDownloadInfo:', datasetsDownloadInfo);
+  console.log('🔎 Log ~ downloadData ~ datasetsInfo:', datasetsInfo);
 
-  await downloadDatasets({ datasetsDownloadInfo });
-
-  // await unzipFiles({ tradesDataDownloadInfo });
+  await processDatasets({ datasetsInfo });
 
   const endTime = performance.now();
   log.success(`Completed (${calculateTimeSpan({ startTime, endTime })})`);
