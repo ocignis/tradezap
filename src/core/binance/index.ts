@@ -24,6 +24,8 @@ export const downloadData = async ({ pathConfigFile, pathOutputDirectory }: Down
     pathOutputDirectory,
   });
 
+  console.log('🔎 Log ~ downloadData ~ datasetsDownloadInfo:', datasetsDownloadInfo);
+
   await downloadDatasets({ datasetsDownloadInfo });
 
   // const tradesDataDownloadInfo = makeTradesDataDownloadInfo({ downloadSymbolPairs: DOWNLOAD_SYMBOL_PAIRS });

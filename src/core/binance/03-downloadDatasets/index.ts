@@ -12,17 +12,15 @@ export const downloadDatasets = async ({ datasetsDownloadInfo }: DownloadDataset
   const startTime = performance.now();
   let numOfDatasetsDownloaded = 0;
 
-  const datasetsPromises = datasetsDownloadInfo.map(
-    async ({ datasetUrl, targetPath, targetFolder, datasetFilename }) => {
-      const file = await fetch(datasetUrl);
-      await fs.ensureDir(targetFolder);
-      await Bun.write(targetPath, file);
+  const datasetsPromises = datasetsDownloadInfo.map(async ({ datasetUrl, targetPath, targetFolder }) => {
+    const file = await fetch(datasetUrl);
+    await fs.ensureDir(targetFolder);
+    await Bun.write(targetPath, file);
 
-      numOfDatasetsDownloaded++;
+    numOfDatasetsDownloaded++;
 
-      log.info(`Downloading... ${numOfDatasetsDownloaded}/${datasetsDownloadInfo.length} - ${datasetFilename}`);
-    },
-  );
+    log.info(`Downloading... ${numOfDatasetsDownloaded}/${datasetsDownloadInfo.length}`);
+  });
 
   await Promise.all(datasetsPromises);
 

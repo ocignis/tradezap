@@ -44,7 +44,5 @@ export const createDatasetsDownloadInfo = ({
 
   const datasetsDownloadInfo = datasetsDownloadInfoNested.flat(3);
 
-  console.log('🔎 Log ~ datasetsDownloadInfo:', datasetsDownloadInfo);
-
   return datasetsDownloadInfo;
 };
