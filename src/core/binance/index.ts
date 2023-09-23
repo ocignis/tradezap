@@ -25,29 +25,7 @@ export const downloadData = async ({ pathConfigFile, pathOutputDirectory }: Down
 
   await downloadDatasets({ datasetsDownloadInfo });
 
-  // const tradesDataDownloadInfo = makeTradesDataDownloadInfo({ downloadSymbolPairs: DOWNLOAD_SYMBOL_PAIRS });
-  // const makeTradesDataDownloadInfoTime = performance.now();
-  // logger.info(
-  //   `makeTradesDataDownloadInfo - ${calculateTimeSpan({
-  //     startTime: initRootFolderTime,
-  //     endTime: makeTradesDataDownloadInfoTime,
-  //   })}`,
-  // );
-
-  // await downloadTradesFiles({ tradesDataDownloadInfo });
-  // const downloadTradesFilesTime = performance.now();
-  // logger.info(
-  //   `downloadTradesFiles - ${calculateTimeSpan({
-  //     startTime: makeTradesDataDownloadInfoTime,
-  //     endTime: downloadTradesFilesTime,
-  //   })}`,
-  // );
-
-  // await unzipTradesFiles({ tradesDataDownloadInfo });
-  // const unzipTradesFilesTime = performance.now();
-  // logger.info(
-  //   `unzipTradesFiles - ${calculateTimeSpan({ startTime: downloadTradesFilesTime, endTime: unzipTradesFilesTime })}`,
-  // );
+  // await unzipFiles({ tradesDataDownloadInfo });
 
   const endTime = performance.now();
   log.success(`Completed (${calculateTimeSpan({ startTime, endTime })})`);
