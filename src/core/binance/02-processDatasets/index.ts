@@ -16,7 +16,10 @@ export const processDatasets = async ({ datasetsInfo }: ProcessDatasetsParams): 
   const processingDatasetsPromises = datasetsInfo.map(async ({ datasetUrl, targetPath, targetFolder }) => {
     const file = await fetch(datasetUrl);
     await mkdir(targetFolder, { recursive: true });
-    await Bun.write(targetPath, file);
+    // Opened issue - https://github.com/oven-sh/bun/issues/5970
+    // await Bun.write(targetPath, file);
+    const fileBlob = await file.blob();
+    await Bun.write(targetPath, fileBlob);
 
     const admZip = new AdmZip(targetPath);
     // const admZip = new AdmZip(file);
