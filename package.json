@@ -51,7 +51,7 @@
     "husky": "8.0.3",
     "lint-staged": "14.0.1",
     "prettier": "3.0.3",
-    "semantic-release": "22.0.4",
+    "semantic-release": "22.0.5",
     "typescript": "5.2.2"
   },
   "license": "MIT",
