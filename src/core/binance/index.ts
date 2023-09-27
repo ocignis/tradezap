@@ -23,7 +23,7 @@ export const downloadData = async ({ pathConfigFile, pathOutputDirectory }: Down
 
   console.log('🔎 Log ~ downloadData ~ datasetsInfo:', datasetsInfo);
 
-  await processDatasets({ datasetsInfo });
+  await processDatasets({ shouldUnzip: false, datasetsInfo });
 
   const endTime = performance.now();
   log.success(`Completed (${calculateTimeSpan({ startTime, endTime })})`);

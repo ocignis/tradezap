@@ -7,26 +7,30 @@ import { log } from 'utils';
 import { DatasetsInfo } from '../01-createDatasetsInfo';
 
 type ProcessDatasetsParams = {
+  shouldUnzip: boolean;
   datasetsInfo: DatasetsInfo;
 };
 
-export const processDatasets = async ({ datasetsInfo }: ProcessDatasetsParams): Promise<void> => {
+export const processDatasets = async ({ shouldUnzip, datasetsInfo }: ProcessDatasetsParams): Promise<void> => {
   let numOfDatasetsDownloaded = 0;
 
   const processingDatasetsPromises = datasetsInfo.map(async ({ datasetUrl, targetPath, targetFolder }) => {
     const file = await fetch(datasetUrl);
     await mkdir(targetFolder, { recursive: true });
-    // Opened issue - https://github.com/oven-sh/bun/issues/5970
-    // await Bun.write(targetPath, file);
-    const fileBlob = await file.blob();
-    await Bun.write(targetPath, fileBlob);
 
-    const admZip = new AdmZip(targetPath);
-    // const admZip = new AdmZip(file);
+    if (shouldUnzip) {
+      const fileArrayBuffer = await file.arrayBuffer();
+      const fileBuffer = Buffer.from(fileArrayBuffer);
 
-    admZip.extractAllTo(targetFolder, true);
+      const admZip = new AdmZip(fileBuffer);
 
-    // await fs.remove(targetPath);
+      admZip.extractAllTo(targetFolder, true);
+    } else {
+      // Opened issue - https://github.com/oven-sh/bun/issues/5970
+      // await Bun.write(targetPath, file);
+      const fileBlob = await file.blob();
+      await Bun.write(targetPath, fileBlob);
+    }
 
     numOfDatasetsDownloaded++;
 
