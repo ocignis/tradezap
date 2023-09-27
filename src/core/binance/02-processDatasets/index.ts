@@ -16,6 +16,7 @@ export const processDatasets = async ({ shouldUnzip, datasetsInfo }: ProcessData
 
   const processingDatasetsPromises = datasetsInfo.map(async ({ datasetUrl, targetPath, targetFolder }) => {
     const file = await fetch(datasetUrl);
+
     await mkdir(targetFolder, { recursive: true });
 
     if (shouldUnzip) {
