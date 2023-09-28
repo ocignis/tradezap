@@ -30,3 +30,15 @@ type DatasetBinance = {
  * @link https://data.binance.vision/
  */
 export type DatasetsBinance = ReadonlyArray<DatasetBinance>;
+
+export type SettingsBinance = {
+  shouldUnzipDatasets?: boolean;
+};
+
+/**
+ * Binance provider.
+ */
+export type ProviderBinance = {
+  settings: SettingsBinance;
+  datasets: DatasetsBinance;
+};

@@ -17,13 +17,16 @@ export const downloadData = async ({ pathConfigFile, pathOutputDirectory }: Down
   console.log('🔎 Log ~ downloadData ~ pathConfigFile:', pathConfigFile);
 
   const datasetsInfo = createDatasetsInfo({
-    datasets: TemporaryDefaultImport,
+    datasets: TemporaryDefaultImport.datasets,
     pathOutputDirectory,
   });
 
   console.log('🔎 Log ~ downloadData ~ datasetsInfo:', datasetsInfo);
 
-  await processDatasets({ shouldUnzip: false, datasetsInfo });
+  await processDatasets({
+    shouldUnzipDatasets: TemporaryDefaultImport.settings.shouldUnzipDatasets ?? true,
+    datasetsInfo,
+  });
 
   const endTime = performance.now();
   log.success(`Completed (${calculateTimeSpan({ startTime, endTime })})`);

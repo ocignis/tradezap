@@ -7,11 +7,11 @@ import { log } from 'utils';
 import { DatasetsInfo } from '../01-createDatasetsInfo';
 
 type ProcessDatasetsParams = {
-  shouldUnzip: boolean;
+  shouldUnzipDatasets: boolean;
   datasetsInfo: DatasetsInfo;
 };
 
-export const processDatasets = async ({ shouldUnzip, datasetsInfo }: ProcessDatasetsParams): Promise<void> => {
+export const processDatasets = async ({ shouldUnzipDatasets, datasetsInfo }: ProcessDatasetsParams): Promise<void> => {
   let numOfDatasetsDownloaded = 0;
 
   const processingDatasetsPromises = datasetsInfo.map(async ({ datasetUrl, targetPath, targetFolder }) => {
@@ -19,7 +19,7 @@ export const processDatasets = async ({ shouldUnzip, datasetsInfo }: ProcessData
 
     await mkdir(targetFolder, { recursive: true });
 
-    if (shouldUnzip) {
+    if (shouldUnzipDatasets) {
       const fileArrayBuffer = await file.arrayBuffer();
       const fileBuffer = Buffer.from(fileArrayBuffer);
 
