@@ -20,11 +20,11 @@ export const createDatasetsInfo = ({ datasets, pathOutputDirectory }: CreateData
   const datasetsInfoNested = datasets.map(({ tradingPair, timeSpans }) => {
     const tradingPairFormatted = tradingPair.replace('-', '');
 
-    return timeSpans.map(({ year, months }) =>
+    return timeSpans.map(({ years, months }) =>
       months.map((month) => {
         const monthFormatted = String(month).padStart(2, '0');
 
-        const datasetFilename = `${tradingPairFormatted}-trades-${year.at(0)}-${monthFormatted}.zip`;
+        const datasetFilename = `${tradingPairFormatted}-trades-${years.at(0)}-${monthFormatted}.zip`;
 
         const datasetUrl = `${BASE_URL}/${tradingPairFormatted}/${datasetFilename}`;
 

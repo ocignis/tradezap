@@ -1,19 +1,13 @@
 /**
- * Trading pair [Symbol]-[Symbol]
- * @example 'BTC-BUSD | ETH-USDT | AVAX-BTC'
- * @link https://support.binance.us/hc/en-us/articles/360049417674-List-of-Supported-Assets
+ * Binance provider.
  */
-export type TradingPair = `${string}-${string}`;
+export type ProviderBinance = {
+  settings: SettingsBinance;
+  datasets: DatasetsBinance;
+};
 
-export const YEARS = [2017, 2018, 2019, 2020, 2021, 2022, 2023] as const;
-type Year = (typeof YEARS)[number];
-
-export const MONTHS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] as const;
-type Months = (typeof MONTHS)[number];
-
-type TimeSpan = {
-  year: ReadonlyArray<Year>;
-  months: ReadonlyArray<Months>;
+export type SettingsBinance = {
+  shouldUnzipDatasets?: boolean;
 };
 
 /**
@@ -31,14 +25,20 @@ type DatasetBinance = {
  */
 export type DatasetsBinance = ReadonlyArray<DatasetBinance>;
 
-export type SettingsBinance = {
-  shouldUnzipDatasets?: boolean;
+type TimeSpan = {
+  years: ReadonlyArray<Year>;
+  months: ReadonlyArray<Month>;
 };
 
 /**
- * Binance provider.
+ * Trading pair [Symbol]-[Symbol]
+ * @example 'BTC-BUSD | ETH-USDT | AVAX-BTC'
+ * @link https://support.binance.us/hc/en-us/articles/360049417674-List-of-Supported-Assets
  */
-export type ProviderBinance = {
-  settings: SettingsBinance;
-  datasets: DatasetsBinance;
-};
+export type TradingPair = `${string}-${string}`;
+
+export const YEARS = [2017, 2018, 2019, 2020, 2021, 2022, 2023] as const;
+type Year = (typeof YEARS)[number];
+
+export const MONTHS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] as const;
+type Month = (typeof MONTHS)[number];

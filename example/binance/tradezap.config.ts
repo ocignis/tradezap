@@ -9,7 +9,7 @@ const PROVIDER_BINANCE: ProviderBinance = {
       tradingPair: 'BTC-BUSD',
       timeSpans: [
         {
-          year: [2023],
+          years: [2023],
           months: [5, 6],
         },
         // {
@@ -17,7 +17,7 @@ const PROVIDER_BINANCE: ProviderBinance = {
         //   months: [10, 11, 12],
         // },
         {
-          year: [2021],
+          years: [2021],
           months: [],
         },
       ],
