@@ -1,3 +1,4 @@
+import { BASE_URL } from '../consts';
 import { DatasetsBinance } from '../types';
 
 type CreateDatasetsInfoParams = {
@@ -5,41 +6,58 @@ type CreateDatasetsInfoParams = {
   pathOutputDirectory: string;
 };
 
-type DatasetDownloadInfo = {
+type DatasetInfo = {
   datasetUrl: string;
   targetPath: string;
   targetFolder: string;
   datasetFilename: string;
 };
 
-export type DatasetsInfo = ReadonlyArray<DatasetDownloadInfo>;
-
-const BASE_URL = 'https://data.binance.vision/data/spot/monthly/trades';
+export type DatasetsInfo = ReadonlyArray<DatasetInfo>;
 
 export const createDatasetsInfo = ({ datasets, pathOutputDirectory }: CreateDatasetsInfoParams): DatasetsInfo => {
-  const datasetsInfoNested = datasets.map(({ tradingPair, timeSpans }) => {
-    const tradingPairFormatted = tradingPair.replace('-', '');
+  const datasetsInfo = datasets.flatMap((dataset) => {
+    switch (dataset.asset) {
+      case 'spot':
+        const { assetType, tradingPair, period, timeSpans } = dataset;
 
-    return timeSpans.map(({ years, months }) =>
-      months.map((month) => {
-        const monthFormatted = String(month).padStart(2, '0');
+        const tradingPairFormatted = tradingPair.replace('-', '');
 
-        const datasetFilename = `${tradingPairFormatted}-trades-${years.at(0)}-${monthFormatted}.zip`;
+        const datasetsInfo = timeSpans.flatMap((timeSpan) =>
+          timeSpan.months.map((month) => {
+            const { years } = timeSpan;
+            const monthFormatted = String(month).padStart(2, '0');
 
-        const datasetUrl = `${BASE_URL}/${tradingPairFormatted}/${datasetFilename}`;
+            const day = period === 'daily' && 'days' in timeSpan ? timeSpan.days.at(0) : null;
+            const dayFormatted = String(day).padStart(2, '0');
+            let datasetFilename = `${tradingPairFormatted}-${assetType}-${years.at(0)}-${monthFormatted}`;
+            datasetFilename += day ? `-${dayFormatted}` : '';
+            datasetFilename += '.zip';
 
-        const targetPath = `${pathOutputDirectory}/${tradingPairFormatted}/${datasetFilename}`;
+            const datasetUrl = `${BASE_URL}/${dataset.asset}/${period}/${assetType}/${tradingPairFormatted}/${datasetFilename}`;
 
-        const targetFolder = `${pathOutputDirectory}/${tradingPairFormatted}`;
+            const targetPath = `${pathOutputDirectory}/${tradingPairFormatted}/${datasetFilename}`;
 
-        const datasetDownloadInfo: DatasetDownloadInfo = { datasetUrl, targetPath, targetFolder, datasetFilename };
+            const targetFolder = `${pathOutputDirectory}/${tradingPairFormatted}`;
 
-        return datasetDownloadInfo;
-      }),
-    );
+            const datasetInfo: DatasetInfo = { datasetUrl, targetPath, targetFolder, datasetFilename };
+
+            return datasetInfo;
+          }),
+        );
+
+        return datasetsInfo;
+
+      case 'futures':
+        return undefined;
+
+      case 'option':
+        return undefined;
+    }
   });
 
-  const datasetsInfo = datasetsInfoNested.flat(3);
+  // Temporary filtering until futures and options are implemented.
+  const datasetsInfoTemporary = datasetsInfo.filter(Boolean);
 
-  return datasetsInfo;
+  return datasetsInfoTemporary;
 };

@@ -26,6 +26,7 @@ const eslintConfig = {
     '@typescript-eslint/prefer-nullish-coalescing': 'error',
     '@typescript-eslint/no-unnecessary-condition': 'error',
     '@typescript-eslint/no-confusing-void-expression': ['error', { ignoreArrowShorthand: true }],
+    '@typescript-eslint/switch-exhaustiveness-check': 'error',
 
     'import/no-default-export': 'error',
     'import/order': [

@@ -1,4 +1,4 @@
-import { log, calculateTimeSpan } from 'utils';
+import { log, calculateTimeSpan } from 'common/utils';
 
 import TemporaryDefaultImport from '../../../example/binance/tradezap.config';
 

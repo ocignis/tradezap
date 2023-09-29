@@ -2,7 +2,7 @@
 
 import { cac } from 'cac';
 
-import { VERSION_INFO } from 'utils';
+import { VERSION_INFO } from 'common/utils';
 
 type CliParseResult = {
   pathConfigFile: string;

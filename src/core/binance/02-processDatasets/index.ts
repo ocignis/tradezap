@@ -2,7 +2,7 @@ import { mkdir } from 'fs/promises';
 
 import AdmZip from 'adm-zip';
 
-import { log } from 'utils';
+import { log } from 'common/utils';
 
 import { DatasetsInfo } from '../01-createDatasetsInfo';
 

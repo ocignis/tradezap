@@ -1,5 +1,6 @@
 /**
  * Binance provider.
+ * @link https://www.binance.com
  */
 export type ProviderBinance = {
   settings: SettingsBinance;
@@ -11,13 +12,47 @@ export type SettingsBinance = {
 };
 
 /**
+ * Spot trades.
+ */
+type DatasetBinanceSpot = DatasetBinanceSpotDaily | DatasetBinanceSpotMonthly;
+
+type DatasetBinanceSpotBase = {
+  asset: 'spot';
+  assetType: 'aggTrades' | 'klines' | 'trades';
+  tradingPair: TradingPair;
+};
+
+type DatasetBinanceSpotDaily = DatasetBinanceSpotBase & {
+  period: 'daily';
+  timeSpans: ReadonlyArray<TimeSpanBase & { days: ReadonlyArray<Day> }>;
+};
+
+type DatasetBinanceSpotMonthly = DatasetBinanceSpotBase & {
+  period: 'monthly';
+  timeSpans: ReadonlyArray<TimeSpanBase>;
+};
+
+/**
+ * Derivative contracts futures.
+ */
+type DatasetBinanceFutures = {
+  asset: 'futures';
+  noop: 'not-implemented';
+};
+
+/**
+ * Derivative contracts options.
+ */
+type DatasetBinanceOption = {
+  asset: 'option';
+  noop: 'not-implemented';
+};
+
+/**
  * Binance data provider (single set)
  * @link https://data.binance.vision/
  */
-type DatasetBinance = {
-  tradingPair: TradingPair;
-  timeSpans: ReadonlyArray<TimeSpan>;
-};
+type DatasetBinance = DatasetBinanceSpot | DatasetBinanceFutures | DatasetBinanceOption;
 
 /**
  * Binance data provider
@@ -25,7 +60,7 @@ type DatasetBinance = {
  */
 export type DatasetsBinance = ReadonlyArray<DatasetBinance>;
 
-type TimeSpan = {
+type TimeSpanBase = {
   years: ReadonlyArray<Year>;
   months: ReadonlyArray<Month>;
 };
@@ -42,3 +77,8 @@ type Year = (typeof YEARS)[number];
 
 export const MONTHS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] as const;
 type Month = (typeof MONTHS)[number];
+
+export const DAYS = [
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
+] as const;
+type Day = (typeof DAYS)[number];
