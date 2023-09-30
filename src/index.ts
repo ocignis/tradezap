@@ -5,9 +5,9 @@ import { downloadData } from 'core/binance';
 log.info(`##### ⚡ TradeZap ${VERSION_INFO} #####`);
 
 try {
-  const { pathConfigFile, pathOutputDirectory } = cliParse();
+  const { pathConfigFile } = cliParse();
 
-  await downloadData({ pathConfigFile, pathOutputDirectory });
+  await downloadData({ pathConfigFile });
 } catch (err) {
   log.error(`Error occurred: ${err as string}`);
 }

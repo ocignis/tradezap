@@ -8,13 +8,14 @@ export type ProviderBinance = {
 };
 
 export type SettingsBinance = {
+  outputDirectory?: string;
   shouldUnzipDatasets?: boolean;
 };
 
 /**
  * Spot trades.
  */
-type DatasetBinanceSpot = DatasetBinanceSpotDaily | DatasetBinanceSpotMonthly;
+export type DatasetBinanceSpot = DatasetBinanceSpotDaily | DatasetBinanceSpotMonthly;
 
 type DatasetBinanceSpotBase = {
   asset: 'spot';

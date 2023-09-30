@@ -1,3 +1,4 @@
+import { DEFAULT_OUTPUT_DIRECTORY } from 'common/consts';
 import { log, calculateTimeSpan } from 'common/utils';
 
 import TemporaryDefaultImport from '../../../example/binance/tradezap.config';
@@ -7,10 +8,9 @@ import { processDatasets } from './02-processDatasets';
 
 type DownloadDataParams = {
   pathConfigFile: string;
-  pathOutputDirectory: string;
 };
 
-export const downloadData = async ({ pathConfigFile, pathOutputDirectory }: DownloadDataParams) => {
+export const downloadData = async ({ pathConfigFile }: DownloadDataParams) => {
   const startTime = performance.now();
 
   // TODO: Extract default export from config file
@@ -18,7 +18,7 @@ export const downloadData = async ({ pathConfigFile, pathOutputDirectory }: Down
 
   const datasetsInfo = createDatasetsInfo({
     datasets: TemporaryDefaultImport.datasets,
-    pathOutputDirectory,
+    pathOutputDirectory: TemporaryDefaultImport.settings.outputDirectory ?? DEFAULT_OUTPUT_DIRECTORY,
   });
 
   console.log('🔎 Log ~ downloadData ~ datasetsInfo:', datasetsInfo);
