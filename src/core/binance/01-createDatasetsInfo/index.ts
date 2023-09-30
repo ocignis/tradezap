@@ -23,16 +23,15 @@ export const createDatasetsInfo = ({ datasets, pathOutputDirectory }: CreateData
         const datasetsInfoSpot = createDatasetsInfoSpot({ dataset, pathOutputDirectory });
         return datasetsInfoSpot;
 
+      // TODO: Implement futures  datasets
       case 'futures':
-        return undefined;
+        return [];
 
+      // TODO: Implement  option datasets
       case 'option':
-        return undefined;
+        return [];
     }
   });
 
-  // Temporary filtering until futures and options are implemented.
-  const datasetsInfoTemporary = datasetsInfo.filter(Boolean);
-
-  return datasetsInfoTemporary;
+  return datasetsInfo;
 };
