@@ -2,6 +2,7 @@ import { ProviderBinance } from 'core/binance/types';
 
 const PROVIDER_BINANCE: ProviderBinance = {
   settings: {
+    outputDirectory: 'example/binance/dataset',
     shouldUnzipDatasets: true,
   },
   datasets: [
