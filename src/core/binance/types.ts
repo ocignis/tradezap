@@ -25,12 +25,12 @@ type DatasetBinanceSpotBase = {
 
 type DatasetBinanceSpotDaily = DatasetBinanceSpotBase & {
   period: 'daily';
-  timeSpans: ReadonlyArray<TimeSpanBase & { days: ReadonlyArray<Day> }>;
+  timeSpans: ReadonlyArray<TimeSpanDaily>;
 };
 
 type DatasetBinanceSpotMonthly = DatasetBinanceSpotBase & {
   period: 'monthly';
-  timeSpans: ReadonlyArray<TimeSpanBase>;
+  timeSpans: ReadonlyArray<TimeSpanMonthly>;
 };
 
 /**
@@ -61,9 +61,13 @@ type DatasetBinance = DatasetBinanceSpot | DatasetBinanceFutures | DatasetBinanc
  */
 export type DatasetsBinance = ReadonlyArray<DatasetBinance>;
 
-type TimeSpanBase = {
+type TimeSpanMonthly = {
   years: ReadonlyArray<Year>;
   months: ReadonlyArray<Month>;
+};
+
+type TimeSpanDaily = TimeSpanMonthly & {
+  days: ReadonlyArray<Day>;
 };
 
 /**
