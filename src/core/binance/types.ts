@@ -69,9 +69,17 @@ type DatasetBinanceFuturesMonthly = DatasetBinanceFuturesBase & {
 /**
  * Derivative contracts options.
  */
-export type DatasetBinanceOption = {
+export type DatasetBinanceOption = DatasetBinanceOptionDaily;
+
+type DatasetBinanceOptionBase = {
   asset: 'option';
-  noop: 'not-implemented';
+  optionType: 'bvol-index' | 'eoh-summary';
+  tradingPair: TradingPair;
+};
+
+type DatasetBinanceOptionDaily = DatasetBinanceOptionBase & {
+  period: 'daily';
+  timeSpans: ReadonlyArray<TimeSpanDaily>;
 };
 
 /**
