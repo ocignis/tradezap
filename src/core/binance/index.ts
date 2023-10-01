@@ -1,4 +1,4 @@
-import { DEFAULT_OUTPUT_DIRECTORY } from 'common/consts';
+import { DEFAULT_OUTPUT_DIRECTORY, DEFAULT_SHOULD_UNZIP_DATASETS } from 'common/consts';
 import { log, calculateTimeSpan } from 'common/utils';
 
 import TemporaryDefaultImport from '../../../example/binance/tradezap.config';
@@ -24,7 +24,7 @@ export const downloadData = async ({ pathConfigFile }: DownloadDataParams) => {
   console.log('🔎 Log ~ downloadData ~ datasetsInfo:', datasetsInfo);
 
   await processDatasets({
-    shouldUnzipDatasets: TemporaryDefaultImport.settings.shouldUnzipDatasets ?? true,
+    shouldUnzipDatasets: TemporaryDefaultImport.settings.shouldUnzipDatasets ?? DEFAULT_SHOULD_UNZIP_DATASETS,
     datasetsInfo,
   });
 
