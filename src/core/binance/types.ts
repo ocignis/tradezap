@@ -40,6 +40,10 @@ export type DatasetBinanceFutures = DatasetBinanceFuturesDaily | DatasetBinanceF
 
 type DatasetBinanceFuturesBase = {
   asset: 'futures';
+  /**
+   * CM - COIN-M | UM - USDT-M
+   */
+  futuresType: 'cm' | 'um';
   assetType:
     | 'aggTrades'
     | 'bookTicker'
