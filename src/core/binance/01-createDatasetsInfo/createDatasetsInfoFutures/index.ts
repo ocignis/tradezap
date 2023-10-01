@@ -1,5 +1,5 @@
 import { DatasetsInfo } from '..';
-import { DatasetBinanceFutures } from '../../types';
+import { DatasetBinanceFutures } from '../../types/futures';
 
 type createDatasetsInfoFuturesParams = {
   dataset: DatasetBinanceFutures;

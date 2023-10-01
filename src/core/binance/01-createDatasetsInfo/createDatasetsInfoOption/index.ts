@@ -1,5 +1,5 @@
 import { DatasetsInfo } from '..';
-import { DatasetBinanceOption } from '../../types';
+import { DatasetBinanceOption } from '../../types/option';
 
 type createDatasetsInfoOptionParams = {
   dataset: DatasetBinanceOption;

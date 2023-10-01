@@ -1,6 +1,6 @@
 import { DatasetInfo, DatasetsInfo } from '..';
 import { BASE_URL } from '../../consts';
-import { DatasetBinanceSpot } from '../../types';
+import { DatasetBinanceSpot } from '../../types/spot';
 
 type createDatasetsInfoSpotParams = {
   dataset: DatasetBinanceSpot;
