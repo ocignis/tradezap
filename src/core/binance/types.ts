@@ -36,9 +36,30 @@ type DatasetBinanceSpotMonthly = DatasetBinanceSpotBase & {
 /**
  * Derivative contracts futures.
  */
-export type DatasetBinanceFutures = {
+export type DatasetBinanceFutures = DatasetBinanceFuturesDaily | DatasetBinanceFuturesMonthly;
+
+type DatasetBinanceFuturesBase = {
   asset: 'futures';
-  noop: 'not-implemented';
+  assetType:
+    | 'aggTrades'
+    | 'bookTicker'
+    | 'fundingRate'
+    | 'indexPriceKlines'
+    | 'klines'
+    | 'markPriceKlines'
+    | 'premiumIndexKlines'
+    | 'trades';
+  tradingPair: TradingPair;
+};
+
+type DatasetBinanceFuturesDaily = DatasetBinanceFuturesBase & {
+  period: 'daily';
+  timeSpans: ReadonlyArray<TimeSpanDaily>;
+};
+
+type DatasetBinanceFuturesMonthly = DatasetBinanceFuturesBase & {
+  period: 'monthly';
+  timeSpans: ReadonlyArray<TimeSpanMonthly>;
 };
 
 /**
