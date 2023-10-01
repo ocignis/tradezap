@@ -36,7 +36,7 @@ type DatasetBinanceSpotMonthly = DatasetBinanceSpotBase & {
 /**
  * Derivative contracts futures.
  */
-type DatasetBinanceFutures = {
+export type DatasetBinanceFutures = {
   asset: 'futures';
   noop: 'not-implemented';
 };
@@ -44,7 +44,7 @@ type DatasetBinanceFutures = {
 /**
  * Derivative contracts options.
  */
-type DatasetBinanceOption = {
+export type DatasetBinanceOption = {
   asset: 'option';
   noop: 'not-implemented';
 };

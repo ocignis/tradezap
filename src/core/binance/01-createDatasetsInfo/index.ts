@@ -1,5 +1,7 @@
 import { DatasetsBinance } from '../types';
 
+import { createDatasetsInfoFutures } from './createDatasetsInfoFutures';
+import { createDatasetsInfoOption } from './createDatasetsInfoOption';
 import { createDatasetsInfoSpot } from './createDatasetsInfoSpot';
 
 type CreateDatasetsInfoParams = {
@@ -23,15 +25,17 @@ export const createDatasetsInfo = ({ datasets, pathOutputDirectory }: CreateData
         const datasetsInfoSpot = createDatasetsInfoSpot({ dataset, pathOutputDirectory });
         return datasetsInfoSpot;
 
-      // TODO: Implement futures  datasets
       case 'futures':
-        return [];
+        const datasetsInfoFutures = createDatasetsInfoFutures({ dataset, pathOutputDirectory });
+        return datasetsInfoFutures;
 
-      // TODO: Implement  option datasets
       case 'option':
-        return [];
+        const datasetsInfoOption = createDatasetsInfoOption({ dataset, pathOutputDirectory });
+        return datasetsInfoOption;
     }
   });
+
+  console.log('🔎 Log ~ datasetsInfo:', datasetsInfo);
 
   return datasetsInfo;
 };

@@ -21,8 +21,6 @@ export const downloadData = async ({ pathConfigFile }: DownloadDataParams) => {
     pathOutputDirectory: TemporaryDefaultImport.settings.outputDirectory ?? DEFAULT_OUTPUT_DIRECTORY,
   });
 
-  console.log('🔎 Log ~ downloadData ~ datasetsInfo:', datasetsInfo);
-
   await processDatasets({
     shouldUnzipDatasets: TemporaryDefaultImport.settings.shouldUnzipDatasets ?? DEFAULT_SHOULD_UNZIP_DATASETS,
     datasetsInfo,
