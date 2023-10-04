@@ -7,6 +7,7 @@ import { DatasetBinanceSpot } from './spot';
  * @link https://www.binance.com
  */
 export type ProviderBinance = {
+  provider: 'binance';
   settings: SettingsBinance;
   datasets: DatasetsBinance;
 };

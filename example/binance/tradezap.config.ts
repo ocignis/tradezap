@@ -1,45 +1,48 @@
-import { ProviderBinance } from 'core/binance/types';
+import { Providers } from 'common/types';
 
-const PROVIDER_BINANCE: ProviderBinance = {
-  settings: {
-    outputDirectory: 'example/binance/dataset',
-    shouldUnzipDatasets: true,
-  },
-  datasets: [
-    {
-      asset: 'spot',
-      assetType: 'trades',
-      // tradingPair: 'BTC-BUSD',
-      tradingPair: 'AVAX-BUSD',
-      period: 'daily',
-      timeSpans: [
-        {
-          years: [2023],
-          months: [1, 2],
-          days: [4, 5, 6],
-        },
-        // {
-        //   year: [2022],
-        //   months: [10, 11, 12],
-        //  days: [],
-        // },
-        // {
-        //   years: [2021],
-        //   months: [],
-        //   days: [1, 2, 3],
-        // },
-      ],
+const TRADEZAP_CONFIG: Providers = [
+  {
+    provider: 'binance',
+    settings: {
+      outputDirectory: 'example/binance/dataset',
+      shouldUnzipDatasets: true,
     },
-    // {
-    //   tradingPair: 'ETH-BUSD',
-    //   timeSpans: [
-    //     {
-    //       year: [2023],
-    //       months: [4, 11],
-    //     },
-    //   ],
-    // },
-  ],
-};
+    datasets: [
+      {
+        asset: 'spot',
+        assetType: 'trades',
+        // tradingPair: 'BTC-BUSD',
+        tradingPair: 'AVAX-BUSD',
+        period: 'daily',
+        timeSpans: [
+          {
+            years: [2023],
+            months: [1, 2],
+            days: [4, 5, 6],
+          },
+          // {
+          //   year: [2022],
+          //   months: [10, 11, 12],
+          //  days: [],
+          // },
+          // {
+          //   years: [2021],
+          //   months: [],
+          //   days: [1, 2, 3],
+          // },
+        ],
+      },
+      // {
+      //   tradingPair: 'ETH-BUSD',
+      //   timeSpans: [
+      //     {
+      //       year: [2023],
+      //       months: [4, 11],
+      //     },
+      //   ],
+      // },
+    ],
+  },
+];
 
-export default PROVIDER_BINANCE;
+export default TRADEZAP_CONFIG;
