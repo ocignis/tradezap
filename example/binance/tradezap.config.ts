@@ -1,6 +1,6 @@
-import { Providers } from 'common/types';
+import { TradezapConfig } from 'common/types';
 
-const TRADEZAP_CONFIG: Providers = [
+const TRADEZAP_CONFIG: TradezapConfig = [
   {
     provider: 'binance',
     settings: {

@@ -3,10 +3,10 @@ import { DatasetBinanceOption } from './option';
 import { DatasetBinanceSpot } from './spot';
 
 /**
- * Binance provider.
+ * Tradezap config for Binance provider.
  * @link https://www.binance.com
  */
-export type ProviderBinance = {
+export type TradezapConfigBinance = {
   provider: 'binance';
   settings: SettingsBinance;
   datasets: DatasetsBinance;

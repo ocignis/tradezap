@@ -1,4 +1,4 @@
-import { ProviderBinance } from 'core/binance/types';
+import { TradezapConfigBinance } from 'core/binance/types';
 
-export type Provider = ProviderBinance;
-export type Providers = ReadonlyArray<ProviderBinance>;
+type TradezapConfigSingle = TradezapConfigBinance;
+export type TradezapConfig = ReadonlyArray<TradezapConfigSingle>;

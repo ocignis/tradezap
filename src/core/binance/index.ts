@@ -1,5 +1,5 @@
 import { DEFAULT_OUTPUT_DIRECTORY, DEFAULT_SHOULD_UNZIP_DATASETS } from 'common/consts';
-import { getProvidersConfig } from 'common/getProvidersConfig';
+import { getTradezapConfig } from 'common/getTradezapConfig';
 import { log, calculateTimeSpan } from 'common/utils';
 
 import { createDatasetsInfo } from './01-createDatasetsInfo';
@@ -12,18 +12,18 @@ type DownloadDataParams = {
 export const downloadData = async ({ pathConfigFile }: DownloadDataParams) => {
   const startTime = performance.now();
 
-  const providersConfig = await getProvidersConfig({ pathConfigFile });
+  const tradezapConfig = await getTradezapConfig({ pathConfigFile });
 
-  providersConfig.map(async (providerConfig) => {
-    switch (providerConfig.provider) {
+  tradezapConfig.map(async (tradezapConfigSingle) => {
+    switch (tradezapConfigSingle.provider) {
       case 'binance':
         const datasetsInfo = createDatasetsInfo({
-          datasets: providerConfig.datasets,
-          pathOutputDirectory: providerConfig.settings.outputDirectory ?? DEFAULT_OUTPUT_DIRECTORY,
+          datasets: tradezapConfigSingle.datasets,
+          pathOutputDirectory: tradezapConfigSingle.settings.outputDirectory ?? DEFAULT_OUTPUT_DIRECTORY,
         });
 
         await processDatasets({
-          shouldUnzipDatasets: providerConfig.settings.shouldUnzipDatasets ?? DEFAULT_SHOULD_UNZIP_DATASETS,
+          shouldUnzipDatasets: tradezapConfigSingle.settings.shouldUnzipDatasets ?? DEFAULT_SHOULD_UNZIP_DATASETS,
           datasetsInfo,
         });
 
@@ -32,7 +32,8 @@ export const downloadData = async ({ pathConfigFile }: DownloadDataParams) => {
       default:
         // User input
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        throw new Error(`Provider "${providerConfig.provider}" is not supported`);
+        log.error(`Provider "${tradezapConfigSingle.provider}" is not supported.`);
+        break;
     }
   });
 

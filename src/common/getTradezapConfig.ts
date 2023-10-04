@@ -1,6 +1,6 @@
 // import fs from 'fs';
 
-import { Providers } from 'common/types/';
+import { TradezapConfig } from 'common/types/';
 
 import TemporaryDefaultImport from '../../example/binance/tradezap.config';
 
@@ -10,7 +10,7 @@ type GetConfigParams = {
 
 // TODO: Extract default export from config file
 // eslint-disable-next-line @typescript-eslint/require-await
-export const getProvidersConfig = async ({ pathConfigFile }: GetConfigParams): Promise<Providers> => {
+export const getTradezapConfig = async ({ pathConfigFile }: GetConfigParams): Promise<TradezapConfig> => {
   console.log('🔎 Log ~ getConfig ~ pathConfigFile:', pathConfigFile);
 
   const foo = Bun.file(pathConfigFile);
