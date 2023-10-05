@@ -11,8 +11,9 @@ TradeZap CLI tool keeps your trading data easily up to date.
 
 ## Usage
 
-- Define which trading data you want in `tradezap.config.ts` file
-- Run `bunx tradezap` or `npx tradezap`
+- `npm i -D tradezap` or `bun i -D tradezap`
+- Define which trading data you want in `tradezap.config.ts` file ([example](example/binance/tradezap.config.ts))
+- Run `npx tradezap` or `bunx tradezap`
 - Trading data are ready to use 📈
 
 ## Data Providers

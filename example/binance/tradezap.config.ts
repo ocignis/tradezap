@@ -8,7 +8,7 @@ const TRADEZAP_CONFIG: TradezapConfig = [
       shouldUnzipDatasets: true,
     },
     datasets: [
-      // Get daily spot trades for AVAX-BUSD trading pair:
+      // Download daily spot trades for AVAX-BUSD trading pair:
       {
         asset: 'spot',
         assetType: 'trades',
@@ -35,7 +35,7 @@ const TRADEZAP_CONFIG: TradezapConfig = [
           // },
         ],
       },
-      // Get daily spot trades for ETH-BUSD trading pair on 1st of January 2021, 2022 and 2023
+      // Download daily spot trades for ETH-BUSD trading pair on 1st of January 2021, 2022 and 2023
       // {
       //   tradingPair: 'ETH-BUSD',
       //   timeSpans: [
