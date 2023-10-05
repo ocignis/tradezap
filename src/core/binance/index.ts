@@ -14,7 +14,7 @@ export const downloadData = async ({ pathConfigFile }: DownloadDataParams) => {
 
   const tradezapConfig = await getTradezapConfig({ pathConfigFile });
 
-  tradezapConfig.map(async (tradezapConfigSingle) => {
+  const tradezapConfigPromises = tradezapConfig.map(async (tradezapConfigSingle) => {
     switch (tradezapConfigSingle.provider) {
       case 'binance':
         const datasetsInfo = createDatasetsInfo({
@@ -36,6 +36,8 @@ export const downloadData = async ({ pathConfigFile }: DownloadDataParams) => {
         break;
     }
   });
+
+  await Promise.all(tradezapConfigPromises);
 
   const endTime = performance.now();
   log.success(`Completed (${calculateTimeSpan({ startTime, endTime })})`);
