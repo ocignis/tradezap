@@ -2,6 +2,8 @@ import { cliParse } from 'cliParse';
 import { log, VERSION_INFO } from 'common/utils';
 import { downloadData } from 'core/binance';
 
+export { TradezapConfig } from 'common/types/';
+
 log.info(`##### ⚡ TradeZap ${VERSION_INFO} #####`);
 
 try {
