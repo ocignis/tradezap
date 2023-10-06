@@ -14,16 +14,16 @@ export const downloadData = async ({ pathConfigFile }: DownloadDataParams) => {
 
   const tradezapConfig = await getTradezapConfig({ pathConfigFile });
 
-  const tradezapConfigPromises = tradezapConfig.map(async (tradezapConfigSingle) => {
-    switch (tradezapConfigSingle.provider) {
+  const tradezapConfigPromises = tradezapConfig.map(async (tradezapConfigProvider) => {
+    switch (tradezapConfigProvider.provider) {
       case 'binance':
         const datasetsInfo = createDatasetsInfo({
-          datasets: tradezapConfigSingle.datasets,
-          pathOutputDirectory: tradezapConfigSingle.settings.outputDirectory ?? DEFAULT_OUTPUT_DIRECTORY,
+          datasets: tradezapConfigProvider.datasets,
+          pathOutputDirectory: tradezapConfigProvider.settings.outputDirectory ?? DEFAULT_OUTPUT_DIRECTORY,
         });
 
         await processDatasets({
-          shouldUnzipDatasets: tradezapConfigSingle.settings.shouldUnzipDatasets ?? DEFAULT_SHOULD_UNZIP_DATASETS,
+          shouldUnzipDatasets: tradezapConfigProvider.settings.shouldUnzipDatasets ?? DEFAULT_SHOULD_UNZIP_DATASETS,
           datasetsInfo,
         });
 
@@ -32,7 +32,7 @@ export const downloadData = async ({ pathConfigFile }: DownloadDataParams) => {
       default:
         // User input
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        log.error(`Provider "${tradezapConfigSingle.provider}" is not supported.`);
+        log.error(`Provider "${tradezapConfigProvider.provider}" is not supported.`);
         break;
     }
   });
