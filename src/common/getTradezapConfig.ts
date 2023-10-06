@@ -13,9 +13,10 @@ type GetConfigParams = {
 export const getTradezapConfig = async ({ pathConfigFile }: GetConfigParams): Promise<TradezapConfig> => {
   console.log('🔎 Log ~ getConfig ~ pathConfigFile:', pathConfigFile);
 
-  const foo = Bun.file(pathConfigFile);
+  const configFile = Bun.file(pathConfigFile);
 
-  console.log('🔎 Log ~ getConfig ~ foo:', foo);
+  console.log('🔎 Log ~ configFile:', configFile);
+
   // Read the module file
   // fs.promises
   //   .readFile(moduleFilePath, 'utf8')
