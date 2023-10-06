@@ -1,4 +1,4 @@
-import { DEFAULT_OUTPUT_DIRECTORY, DEFAULT_SHOULD_UNZIP_DATASETS } from 'common/consts';
+import { DEFAULT_PATH_OUTPUT_DIRECTORY, DEFAULT_SHOULD_UNZIP_DATASETS } from 'common/consts';
 import { getTradezapConfig } from 'common/getTradezapConfig';
 import { log, calculateTimeSpan } from 'common/utils';
 
@@ -19,7 +19,7 @@ export const downloadData = async ({ pathConfigFile }: DownloadDataParams) => {
       case 'binance':
         const datasetsInfo = createDatasetsInfo({
           datasets: tradezapConfigProvider.datasets,
-          pathOutputDirectory: tradezapConfigProvider.settings.outputDirectory ?? DEFAULT_OUTPUT_DIRECTORY,
+          pathOutputDirectory: tradezapConfigProvider.settings.outputDirectory ?? DEFAULT_PATH_OUTPUT_DIRECTORY,
         });
 
         await processDatasets({

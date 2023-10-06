@@ -2,19 +2,18 @@
 
 import { cac } from 'cac';
 
+import { DEFAULT_PATH_CONFIG_FILE } from 'common/consts';
 import { VERSION_INFO } from 'common/utils';
 
 type CliParseResult = {
   pathConfigFile: string;
 };
 
-const DEFAULT_CONFIG_FILE = 'tradezap.config.ts';
-
 export const cliParse = (): CliParseResult => {
   const cli = cac('tradezap');
 
   cli.option('-c, --config <filename>', 'Custom config file', {
-    default: DEFAULT_CONFIG_FILE,
+    default: DEFAULT_PATH_CONFIG_FILE,
   });
 
   cli.help();
