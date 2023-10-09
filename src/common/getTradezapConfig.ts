@@ -15,8 +15,6 @@ export const getTradezapConfig = async ({ pathConfigFile }: GetTradezapConfigPar
 
     const tradezapConfig = module.default as TradezapConfig;
 
-    console.log('🔎 Log ~ getTradezapConfig ~ tradezapConfig:', tradezapConfig);
-
     return tradezapConfig;
   } catch (error) {
     // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
