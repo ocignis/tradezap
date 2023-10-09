@@ -14,13 +14,12 @@ type ProcessDatasetsParams = {
 export const processDatasets = async ({ shouldUnzipDatasets, datasetsInfo }: ProcessDatasetsParams): Promise<void> => {
   let numOfDatasetsDownloaded = 0;
 
-  const processingDatasetsPromises = datasetsInfo.map(
+  const processedDatasetsPromises = datasetsInfo.map(
     async ({ datasetUrl, targetPath, targetFolder, datasetFilename }) => {
       const response = await fetch(datasetUrl);
 
       if (response.status === 404) {
-        log.info(`Dataset file ${datasetFilename} can't be downloaded (not found).`);
-        return;
+        return datasetFilename;
       }
 
       await mkdir(targetFolder, { recursive: true });
@@ -45,5 +44,11 @@ export const processDatasets = async ({ shouldUnzipDatasets, datasetsInfo }: Pro
     },
   );
 
-  await Promise.all(processingDatasetsPromises);
+  const processedDatasets = await Promise.all(processedDatasetsPromises);
+  const processedDatasetsNotFound = processedDatasets.filter(Boolean);
+
+  if (processedDatasetsNotFound.length) {
+    log.info(`${processedDatasetsNotFound.length} dataset files  couldn't be downloaded (not found):`);
+    processedDatasetsNotFound.forEach((datasetNotFound) => log.info(`  • ${datasetNotFound}`));
+  }
 };
