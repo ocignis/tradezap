@@ -15,19 +15,19 @@ const TRADEZAP_CONFIG: TradezapConfig = [
         tradingPair: 'AVAX-BUSD',
         timeSpans: [
           // - 1st, 2nd and 3td of April and May for 2022 and 2023
-          {
-            period: 'daily',
-            years: [2022, 2023],
-            months: [4, 5],
-            days: [1, 2, 3],
-          },
-          // - All days for October and November of 2022
           // {
           //   period: 'daily',
-          //   years: [2022],
-          //   months: [10, 11],
-          //   days: [],
+          //   years: [2022, 2023],
+          //   months: [4, 5],
+          //   days: [1, 2, 3],
           // },
+          // - All days for October and November of 2022
+          {
+            period: 'daily',
+            years: [2022],
+            months: [10, 11],
+            days: [],
+          },
           // - Every 1st of the month in 2021
           // {
           //   period: 'daily',

@@ -1,4 +1,4 @@
-import { TimeSpan } from 'core/binance/types/common';
+import { DAYS, TimeSpan } from 'core/binance/types/common';
 import { SpotAssetType } from 'core/binance/types/spot';
 
 import { createDatasetFilename } from './createDatasetFilename';
@@ -24,7 +24,10 @@ export const createDatasetFilenames = ({
         return datasetFilenamesFromMonth;
       }
 
-      const datasetFilenamesFromDays = timeSpan.days.map((day) => {
+      const isAllDaysInMonth = timeSpan.days.length === 0;
+      const days = isAllDaysInMonth ? DAYS : timeSpan.days;
+
+      const datasetFilenamesFromDays = days.map((day) => {
         const datasetFilenamesFromDay = createDatasetFilename({
           tradingPair,
           assetType,
