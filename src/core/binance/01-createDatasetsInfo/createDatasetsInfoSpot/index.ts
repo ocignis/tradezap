@@ -23,7 +23,6 @@ export const createDatasetsInfoSpot = ({
       timeSpan,
       tradingPair: tradingPairFormatted,
       assetType,
-      asset,
     });
 
     const datasetsInfoSingleTimeSpan = datasetFilenames.map((datasetFilename) => {
