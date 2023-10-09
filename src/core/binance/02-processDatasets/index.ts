@@ -7,11 +7,16 @@ import { log } from 'common/utils';
 import { DatasetsInfo } from '../01-createDatasetsInfo';
 
 type ProcessDatasetsParams = {
+  isVerbose: boolean;
   shouldUnzipDatasets: boolean;
   datasetsInfo: DatasetsInfo;
 };
 
-export const processDatasets = async ({ shouldUnzipDatasets, datasetsInfo }: ProcessDatasetsParams): Promise<void> => {
+export const processDatasets = async ({
+  isVerbose,
+  shouldUnzipDatasets,
+  datasetsInfo,
+}: ProcessDatasetsParams): Promise<void> => {
   let numOfDatasetsDownloaded = 0;
 
   const processedDatasetsPromises = datasetsInfo.map(
@@ -47,7 +52,7 @@ export const processDatasets = async ({ shouldUnzipDatasets, datasetsInfo }: Pro
   const processedDatasets = await Promise.all(processedDatasetsPromises);
   const processedDatasetsNotFound = processedDatasets.filter(Boolean);
 
-  if (processedDatasetsNotFound.length) {
+  if (isVerbose && processedDatasetsNotFound.length) {
     log.info(`${processedDatasetsNotFound.length} dataset files  couldn't be downloaded (not found):`);
     processedDatasetsNotFound.forEach((datasetNotFound) => log.info(`  • ${datasetNotFound}`));
   }

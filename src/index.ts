@@ -10,9 +10,9 @@ export type { TradezapConfig };
 log.info(`##### ⚡ TradeZap ${VERSION_INFO} #####`);
 
 try {
-  const { pathConfigFile } = cliParse();
+  const { pathConfigFile, isVerbose } = cliParse();
 
-  await downloadData({ pathConfigFile });
+  await downloadData({ pathConfigFile, isVerbose });
 } catch (err) {
   log.error(`Error occurred: ${err as string}`);
 }

@@ -7,9 +7,10 @@ import { processDatasets } from './02-processDatasets';
 
 type DownloadDataParams = {
   pathConfigFile: string;
+  isVerbose: boolean;
 };
 
-export const downloadData = async ({ pathConfigFile }: DownloadDataParams) => {
+export const downloadData = async ({ pathConfigFile, isVerbose }: DownloadDataParams) => {
   const startTime = performance.now();
 
   const tradezapConfig = await getTradezapConfig({ pathConfigFile });
@@ -25,6 +26,7 @@ export const downloadData = async ({ pathConfigFile }: DownloadDataParams) => {
         console.log('🔎 Log ~ datasetsInfo:', datasetsInfo);
 
         await processDatasets({
+          isVerbose,
           shouldUnzipDatasets: tradezapConfigProvider.settings.shouldUnzipDatasets ?? DEFAULT_SHOULD_UNZIP_DATASETS,
           datasetsInfo,
         });

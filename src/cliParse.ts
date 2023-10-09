@@ -7,6 +7,7 @@ import { VERSION_INFO } from 'common/utils';
 
 type CliParseResult = {
   pathConfigFile: string;
+  isVerbose: boolean;
 };
 
 export const cliParse = (): CliParseResult => {
@@ -16,12 +17,19 @@ export const cliParse = (): CliParseResult => {
     default: DEFAULT_PATH_CONFIG_FILE,
   });
 
+  cli.option('--verbose', 'Verbose output', {
+    default: true,
+  });
+
   cli.help();
   cli.version(VERSION_INFO);
 
   const cliParams = cli.parse();
 
+  console.log('🔎 Log ~ cliParse ~ cliParams:', cliParams);
+
   return {
     pathConfigFile: cliParams.options.config,
+    isVerbose: cliParams.options.verbose,
   };
 };
