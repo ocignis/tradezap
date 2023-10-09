@@ -3,11 +3,11 @@
 
 import { TradezapConfig } from 'common/types';
 
-type GetConfigParams = {
+type GetTradezapConfigParams = {
   pathConfigFile: string;
 };
 
-export const getTradezapConfig = async ({ pathConfigFile }: GetConfigParams): Promise<TradezapConfig> => {
+export const getTradezapConfig = async ({ pathConfigFile }: GetTradezapConfigParams): Promise<TradezapConfig> => {
   try {
     const absoluteConfigPath = `${process.cwd()}/${pathConfigFile}`;
 
