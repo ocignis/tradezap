@@ -22,19 +22,19 @@ const TRADEZAP_CONFIG: TradezapConfig = [
           //   days: [1, 2, 3],
           // },
           // - All days in October 2022
-          {
-            period: 'daily',
-            years: [2022],
-            months: [10],
-            days: [],
-          },
-          // - Every 1st of the month in 2021
           // {
           //   period: 'daily',
-          //   years: [2021],
-          //   months: [],
-          //   days: [1],
+          //   years: [2022],
+          //   months: [10],
+          //   days: [],
           // },
+          // - Every 1st of the month in 2021
+          {
+            period: 'daily',
+            years: [2021],
+            months: [],
+            days: [1],
+          },
         ],
       },
       // Download ETH-BUSD daily spot trades for 1st of January 2021, 2022 and 2023
