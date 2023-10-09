@@ -18,7 +18,7 @@ export type SettingsBinance = {
 };
 
 /**
- * Binance data provider (single set)
+ * Binance data provider
  * @link https://data.binance.vision/
  */
 type DatasetBinance = DatasetBinanceSpot | DatasetBinanceFutures | DatasetBinanceOption;

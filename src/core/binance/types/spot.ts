@@ -18,5 +18,6 @@ type DatasetBinanceSpotMonthly = DatasetBinanceSpotBase & {
 
 /**
  * Spot trades.
+ * @link https://data.binance.vision/?prefix=data/spot/
  */
 export type DatasetBinanceSpot = DatasetBinanceSpotDaily | DatasetBinanceSpotMonthly;
