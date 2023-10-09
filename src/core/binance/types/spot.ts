@@ -1,10 +1,5 @@
 import { TimeSpanDaily, TimeSpanMonthly, TradingPair } from './common';
 
-/**
- * Spot trades.
- */
-export type DatasetBinanceSpot = DatasetBinanceSpotDaily | DatasetBinanceSpotMonthly;
-
 type DatasetBinanceSpotBase = {
   asset: 'spot';
   assetType: 'aggTrades' | 'klines' | 'trades';
@@ -20,3 +15,8 @@ type DatasetBinanceSpotMonthly = DatasetBinanceSpotBase & {
   period: 'monthly';
   timeSpans: ReadonlyArray<TimeSpanMonthly>;
 };
+
+/**
+ * Spot trades.
+ */
+export type DatasetBinanceSpot = DatasetBinanceSpotDaily | DatasetBinanceSpotMonthly;
