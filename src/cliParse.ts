@@ -18,15 +18,13 @@ export const cliParse = (): CliParseResult => {
   });
 
   cli.option('--verbose', 'Verbose output', {
-    default: true,
+    default: false,
   });
 
   cli.help();
   cli.version(VERSION_INFO);
 
   const cliParams = cli.parse();
-
-  console.log('🔎 Log ~ cliParse ~ cliParams:', cliParams);
 
   return {
     pathConfigFile: cliParams.options.config,

@@ -52,8 +52,11 @@ export const processDatasets = async ({
   const processedDatasets = await Promise.all(processedDatasetsPromises);
   const processedDatasetsNotFound = processedDatasets.filter(Boolean);
 
-  if (isVerbose && processedDatasetsNotFound.length) {
+  if (processedDatasetsNotFound.length) {
     log.info(`${processedDatasetsNotFound.length} dataset files  couldn't be downloaded (not found):`);
-    processedDatasetsNotFound.forEach((datasetNotFound) => log.info(`  • ${datasetNotFound}`));
+
+    if (isVerbose) {
+      processedDatasetsNotFound.forEach((datasetNotFound) => log.info(`  • ${datasetNotFound}`));
+    }
   }
 };

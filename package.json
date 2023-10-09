@@ -16,7 +16,7 @@
   "scripts": {
     "prepare": "husky install",
     "build": "rm -rf dist && bun run build.ts",
-    "dev": "bun --watch ./src/index.ts --config example/binance/tradezap.config.ts",
+    "dev": "bun --watch ./src/index.ts --config example/binance/tradezap.config.ts --verbose",
     "lint": "eslint --max-warnings 0 .",
     "lint-fix": "eslint --fix .",
     "lint-staged-husky": "lint-staged",
