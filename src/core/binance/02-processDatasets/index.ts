@@ -14,29 +14,36 @@ type ProcessDatasetsParams = {
 export const processDatasets = async ({ shouldUnzipDatasets, datasetsInfo }: ProcessDatasetsParams): Promise<void> => {
   let numOfDatasetsDownloaded = 0;
 
-  const processingDatasetsPromises = datasetsInfo.map(async ({ datasetUrl, targetPath, targetFolder }) => {
-    const file = await fetch(datasetUrl);
+  const processingDatasetsPromises = datasetsInfo.map(
+    async ({ datasetUrl, targetPath, targetFolder, datasetFilename }) => {
+      const response = await fetch(datasetUrl);
 
-    await mkdir(targetFolder, { recursive: true });
+      if (response.status === 404) {
+        log.info(`Dataset file ${datasetFilename} can't be downloaded (not found).`);
+        return;
+      }
 
-    if (shouldUnzipDatasets) {
-      const fileArrayBuffer = await file.arrayBuffer();
-      const fileBuffer = Buffer.from(fileArrayBuffer);
+      await mkdir(targetFolder, { recursive: true });
 
-      const admZip = new AdmZip(fileBuffer);
+      if (shouldUnzipDatasets) {
+        const fileArrayBuffer = await response.arrayBuffer();
+        const fileBuffer = Buffer.from(fileArrayBuffer);
 
-      admZip.extractAllTo(targetFolder, true);
-    } else {
-      // Opened issue - https://github.com/oven-sh/bun/issues/5970
-      // await Bun.write(targetPath, file);
-      const fileBlob = await file.blob();
-      await Bun.write(targetPath, fileBlob);
-    }
+        const admZip = new AdmZip(fileBuffer);
 
-    numOfDatasetsDownloaded++;
+        admZip.extractAllTo(targetFolder, true);
+      } else {
+        // Opened issue - https://github.com/oven-sh/bun/issues/5970
+        // await Bun.write(targetPath, file);
+        const fileBlob = await response.blob();
+        await Bun.write(targetPath, fileBlob);
+      }
 
-    log.info(`Processing... ${numOfDatasetsDownloaded}/${datasetsInfo.length}`);
-  });
+      numOfDatasetsDownloaded++;
+
+      log.info(`Processing... ${numOfDatasetsDownloaded}/${datasetsInfo.length}`);
+    },
+  );
 
   await Promise.all(processingDatasetsPromises);
 };
