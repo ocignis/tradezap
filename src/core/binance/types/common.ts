@@ -1,11 +1,18 @@
 export type TimeSpanMonthly = {
+  period: 'monthly';
   years: ReadonlyArray<Year>;
   months: ReadonlyArray<Month>;
 };
 
-export type TimeSpanDaily = TimeSpanMonthly & {
+export type TimeSpanDaily = {
+  period: 'daily';
+  years: ReadonlyArray<Year>;
+  months: ReadonlyArray<Month>;
   days: ReadonlyArray<Day>;
 };
+
+export type TimeSpan = TimeSpanMonthly | TimeSpanDaily;
+export type TimeSpans = ReadonlyArray<TimeSpan>;
 
 /**
  * Trading pair [Symbol]-[Symbol]

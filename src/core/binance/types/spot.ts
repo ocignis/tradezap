@@ -1,23 +1,14 @@
-import { TimeSpanDaily, TimeSpanMonthly, TradingPair } from './common';
+import { TimeSpans, TradingPair } from './common';
 
-type DatasetBinanceSpotBase = {
-  asset: 'spot';
-  assetType: 'aggTrades' | 'klines' | 'trades';
-  tradingPair: TradingPair;
-};
-
-type DatasetBinanceSpotDaily = DatasetBinanceSpotBase & {
-  period: 'daily';
-  timeSpans: ReadonlyArray<TimeSpanDaily>;
-};
-
-type DatasetBinanceSpotMonthly = DatasetBinanceSpotBase & {
-  period: 'monthly';
-  timeSpans: ReadonlyArray<TimeSpanMonthly>;
-};
+export type SpotAssetType = 'aggTrades' | 'klines' | 'trades';
 
 /**
  * Spot trades.
  * @link https://data.binance.vision/?prefix=data/spot/
  */
-export type DatasetBinanceSpot = DatasetBinanceSpotDaily | DatasetBinanceSpotMonthly;
+export type DatasetBinanceSpot = {
+  asset: 'spot';
+  assetType: SpotAssetType;
+  tradingPair: TradingPair;
+  timeSpans: TimeSpans;
+};

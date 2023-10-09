@@ -8,41 +8,59 @@ const TRADEZAP_CONFIG: TradezapConfig = [
       shouldUnzipDatasets: true,
     },
     datasets: [
-      // Download daily spot trades for AVAX-BUSD trading pair:
+      // Download AVAX-BUSD spot trades for:
       {
         asset: 'spot',
         assetType: 'trades',
         tradingPair: 'AVAX-BUSD',
-        period: 'daily',
         timeSpans: [
-          // - 1st, 2nd and 3td of April and May 2023
+          // - 1st, 2nd and 3td of April and May for 2022 and 2023
           {
-            years: [2023],
+            period: 'daily',
+            years: [2022, 2023],
             months: [4, 5],
             days: [1, 2, 3],
           },
-          // - October and November of 2022
+          // - All days for October and November of 2022
           // {
-          //   year: [2022],
+          //   period: 'daily',
+          //   years: [2022],
           //   months: [10, 11],
-          //  days: [],
+          //   days: [],
           // },
           // - Every 1st of the month in 2021
           // {
+          //   period: 'daily',
           //   years: [2021],
           //   months: [],
           //   days: [1],
           // },
         ],
       },
-      // Download daily spot trades for ETH-BUSD trading pair on 1st of January 2021, 2022 and 2023
+      // Download ETH-BUSD daily spot trades for 1st of January 2021, 2022 and 2023
       // {
       //   tradingPair: 'ETH-BUSD',
+      //   asset: 'spot',
+      //   assetType: 'trades',
       //   timeSpans: [
       //     {
-      //       year: [2021, 2022, 2023],
+      //       period: 'daily',
+      //       years: [2021, 2022, 2023],
       //       months: [1],
       //       days: [1],
+      //     },
+      //   ],
+      // },
+      // Download AVAX-BUSD monthly spot trades for August and September 2023
+      // {
+      //   tradingPair: 'AVAX-BUSD',
+      //   asset: 'spot',
+      //   assetType: 'trades',
+      //   timeSpans: [
+      //     {
+      //       period: 'monthly',
+      //       years: [2023],
+      //       months: [8, 9],
       //     },
       //   ],
       // },
