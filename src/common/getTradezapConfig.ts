@@ -1,6 +1,7 @@
-// import fs from 'fs';
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 
-import { TradezapConfig } from 'common/types/';
+import { TradezapConfig } from 'common/types';
 
 import TemporaryDefaultImport from '../../example/binance/tradezap.config';
 
@@ -8,32 +9,21 @@ type GetConfigParams = {
   pathConfigFile: string;
 };
 
-// TODO: Extract default export from config file
-// eslint-disable-next-line @typescript-eslint/require-await
 export const getTradezapConfig = async ({ pathConfigFile }: GetConfigParams): Promise<TradezapConfig> => {
-  console.log('🔎 Log ~ getConfig ~ pathConfigFile:', pathConfigFile);
+  try {
+    const absoluteConfigPath = `${process.cwd()}/${pathConfigFile}`;
 
-  const configFile = Bun.file(pathConfigFile);
+    const module = await import(absoluteConfigPath);
 
-  console.log('🔎 Log ~ configFile:', configFile);
+    const tradezapConfig = module.default as TradezapConfig;
 
-  // Read the module file
-  // fs.promises
-  //   .readFile(moduleFilePath, 'utf8')
-  //   .then((moduleContent) => {
-  //     // Parse the module content into a module object
-  //     const module = new Module(moduleFilePath, null);
-  //     module._compile(moduleContent, moduleFilePath);
+    console.log('🔎 Log ~ getTradezapConfig ~ tradezapConfig:', tradezapConfig);
 
-  //     // Get the default export from the module
-  //     const defaultExport = module.exports.default;
-
-  //     // Use the default export
-  //     console.log('Default Export:', defaultExport);
-  //   })
-  //   .catch((err) => {
-  //     console.error('Error reading the module file:', err);
-  //   });
+    return tradezapConfig;
+  } catch (error) {
+    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+    throw new Error(`Error loading Tradezap config file. Raw ${error}`);
+  }
 
   return TemporaryDefaultImport;
 };
