@@ -35,7 +35,5 @@ export const createDatasetsInfo = ({ datasets, pathOutputDirectory }: CreateData
     }
   });
 
-  console.log('🔎 Log ~ datasetsInfo:', datasetsInfo);
-
   return datasetsInfo;
 };

@@ -22,6 +22,8 @@ export const downloadData = async ({ pathConfigFile }: DownloadDataParams) => {
           pathOutputDirectory: tradezapConfigProvider.settings.outputDirectory ?? DEFAULT_PATH_OUTPUT_DIRECTORY,
         });
 
+        console.log('🔎 Log ~ datasetsInfo:', datasetsInfo);
+
         await processDatasets({
           shouldUnzipDatasets: tradezapConfigProvider.settings.shouldUnzipDatasets ?? DEFAULT_SHOULD_UNZIP_DATASETS,
           datasetsInfo,
