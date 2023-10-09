@@ -1,7 +1,9 @@
-import { DatasetsInfo } from '..';
+import { BASE_URL } from 'core/binance/consts';
+
+import { DatasetInfo, DatasetsInfo } from '..';
 import { DatasetBinanceSpot } from '../../types/spot';
 
-import { createDatasetsInfoSpotTimeSpan } from './createDatasetsInfoSpotTimeSpan';
+import { createDatasetFilenames } from './createDatasetFilenames';
 
 type createDatasetsInfoSpotParams = {
   dataset: DatasetBinanceSpot;
@@ -17,15 +19,26 @@ export const createDatasetsInfoSpot = ({
   const tradingPairFormatted = tradingPair.replace('-', '');
 
   const datasetsInfo = timeSpans.flatMap((timeSpan) => {
-    const datasetInfo = createDatasetsInfoSpotTimeSpan({
+    const datasetFilenames = createDatasetFilenames({
       timeSpan,
-      pathOutputDirectory,
       tradingPair: tradingPairFormatted,
       assetType,
       asset,
     });
-    return datasetInfo;
-  });
 
+    const datasetsInfoSingleTimeSpan = datasetFilenames.map((datasetFilename) => {
+      const datasetUrl = `${BASE_URL}/${asset}/${timeSpan.period}/${assetType}/${tradingPairFormatted}/${datasetFilename}`;
+
+      const targetPath = `${pathOutputDirectory}/${tradingPairFormatted}/${datasetFilename}`;
+
+      const targetFolder = `${pathOutputDirectory}/${tradingPairFormatted}`;
+
+      const datasetInfo: DatasetInfo = { datasetUrl, targetPath, targetFolder, datasetFilename };
+
+      return datasetInfo;
+    });
+
+    return datasetsInfoSingleTimeSpan;
+  });
   return datasetsInfo;
 };

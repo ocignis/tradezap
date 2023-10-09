@@ -1,43 +1,30 @@
 import { TimeSpan, Day, Month, Year } from 'core/binance/types/common';
 import { SpotAssetType } from 'core/binance/types/spot';
 
-import { DatasetInfo, DatasetsInfo } from '..';
-import { BASE_URL } from '../../consts';
-
-type CreateDatasetsInfoSpotTimeSpanParams = {
+type CreateDatasetFilenamesParams = {
   timeSpan: TimeSpan;
-  pathOutputDirectory: string;
   tradingPair: string;
   assetType: SpotAssetType;
   asset: 'spot';
 };
 
-export const createDatasetsInfoSpotTimeSpan = ({
+export const createDatasetFilenames = ({
   timeSpan,
-  pathOutputDirectory,
   tradingPair,
   assetType,
   asset,
-}: CreateDatasetsInfoSpotTimeSpanParams): DatasetsInfo => {
+}: CreateDatasetFilenamesParams): ReadonlyArray<string> => {
   const { period } = timeSpan;
 
-  const datasetsInfo = timeSpan.years.flatMap((year) =>
+  const datasetFilenames = timeSpan.years.flatMap((year) =>
     timeSpan.months.map((month) => {
       const datasetFilename = createDatasetFilename({ tradingPair, assetType, period, year, month, day: 1, asset });
 
-      const datasetUrl = `${BASE_URL}/${asset}/${period}/${assetType}/${tradingPair}/${datasetFilename}`;
-
-      const targetPath = `${pathOutputDirectory}/${tradingPair}/${datasetFilename}`;
-
-      const targetFolder = `${pathOutputDirectory}/${tradingPair}`;
-
-      const datasetInfo: DatasetInfo = { datasetUrl, targetPath, targetFolder, datasetFilename };
-
-      return datasetInfo;
+      return datasetFilename;
     }),
   );
 
-  return datasetsInfo;
+  return datasetFilenames;
 };
 
 type CreateDatasetFilenameParams = {
