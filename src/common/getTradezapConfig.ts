@@ -3,8 +3,6 @@
 
 import { TradezapConfig } from 'common/types';
 
-import TemporaryDefaultImport from '../../example/binance/tradezap.config';
-
 type GetConfigParams = {
   pathConfigFile: string;
 };
@@ -24,6 +22,4 @@ export const getTradezapConfig = async ({ pathConfigFile }: GetConfigParams): Pr
     // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     throw new Error(`Error loading Tradezap config file. Raw ${error}`);
   }
-
-  return TemporaryDefaultImport;
 };
