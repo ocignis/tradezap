@@ -37,26 +37,19 @@ type CreateDatasetFilenameParams = {
   asset: 'spot';
 };
 
-const createDatasetFilename = ({
-  tradingPair,
-  assetType,
-  period,
-  year,
-  month,
-  day,
-}: CreateDatasetFilenameParams): string => {
+const createDatasetFilename = ({ tradingPair, assetType, period, year, month, day }: CreateDatasetFilenameParams) => {
   const monthFormatted = String(month).padStart(2, '0');
 
-  const datasetFilenameBase = `${tradingPair}-${assetType}-${year}-${monthFormatted}`;
+  const datasetFilenameBase = `${tradingPair}-${assetType}-${year}-${monthFormatted}` as const;
 
   if (period === 'monthly') {
-    const datasetFilenameMonthly = `${datasetFilenameBase}.zip`;
+    const datasetFilenameMonthly = `${datasetFilenameBase}.zip` as const;
     return datasetFilenameMonthly;
   }
 
   const dayFormatted = String(day).padStart(2, '0');
 
-  const datasetFilenameDaily = `${datasetFilenameBase}-${dayFormatted}.zip`;
+  const datasetFilenameDaily = `${datasetFilenameBase}-${dayFormatted}.zip` as const;
 
   return datasetFilenameDaily;
 };
