@@ -29,10 +29,17 @@ const TRADEZAP_CONFIG: TradezapConfig = [
           //   days: [],
           // },
           // - Every 1st of the month in 2021
+          // {
+          //   period: 'daily',
+          //   years: [2021],
+          //   months: [],
+          //   days: [1],
+          // },
+          // - Every 1st of March for all years available
           {
             period: 'daily',
-            years: [2021],
-            months: [],
+            years: [],
+            months: [3],
             days: [1],
           },
         ],
