@@ -2,8 +2,8 @@ import { DEFAULT_PATH_OUTPUT_DIRECTORY, DEFAULT_SHOULD_UNZIP_DATASETS } from 'co
 import { getTradezapConfig } from 'common/getTradezapConfig';
 import { log, calculateTimeSpan } from 'common/utils';
 
-import { createDatasetsInfo } from './01-createDatasetsInfo';
-import { processDatasets } from './02-processDatasets';
+import { createDatasetsInfo } from './binance/01-createDatasetsInfo';
+import { processDatasets } from './binance/02-processDatasets';
 
 type DownloadDataParams = {
   pathConfigFile: string;
@@ -31,12 +31,6 @@ export const downloadData = async ({ pathConfigFile, isVerbose }: DownloadDataPa
           datasetsInfo,
         });
 
-        break;
-
-      default:
-        // User input
-        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        log.error(`Provider "${tradezapConfigProvider.provider}" is not supported.`);
         break;
     }
   });
