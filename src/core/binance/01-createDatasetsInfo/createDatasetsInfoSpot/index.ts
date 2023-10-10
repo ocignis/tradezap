@@ -28,7 +28,7 @@ export const createDatasetsInfoSpot = ({
     const datasetsInfoSingleTimeSpan = datasetFilenames.map((datasetFilename) => {
       const datasetUrl = `${BASE_URL}/${asset}/${timeSpan.period}/${assetType}/${tradingPairFormatted}/${datasetFilename}`;
 
-      const targetFolder = `${pathOutputDirectory}/${tradingPairFormatted}`;
+      const targetFolder = `${pathOutputDirectory}/${tradingPair}/${asset}/${assetType}/${timeSpan.period}`;
 
       const targetPath = `${targetFolder}/${datasetFilename}`;
 
