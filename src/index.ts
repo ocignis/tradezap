@@ -14,5 +14,5 @@ try {
 
   await downloadData({ pathConfigFile, isVerbose });
 } catch (err) {
-  log.error(`Error occurred: ${err as string}`);
+  log.error(err as string);
 }

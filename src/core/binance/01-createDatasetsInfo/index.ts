@@ -1,7 +1,7 @@
 import { DatasetsBinance } from '../types';
 
-import { createDatasetsInfoFutures } from './createDatasetsInfoFutures';
-import { createDatasetsInfoOption } from './createDatasetsInfoOption';
+// import { createDatasetsInfoFutures } from './createDatasetsInfoFutures';
+// import { createDatasetsInfoOption } from './createDatasetsInfoOption';
 import { createDatasetsInfoSpot } from './createDatasetsInfoSpot';
 
 type CreateDatasetsInfoParams = {
@@ -26,12 +26,16 @@ export const createDatasetsInfo = ({ datasets, pathOutputDirectory }: CreateData
         return datasetsInfoSpot;
 
       case 'futures':
-        const datasetsInfoFutures = createDatasetsInfoFutures({ dataset, pathOutputDirectory });
-        return datasetsInfoFutures;
+        throw new Error(`Asset '${dataset.asset}' is not implemented yet`);
+
+      // const datasetsInfoFutures = createDatasetsInfoFutures({ dataset, pathOutputDirectory });
+      // return datasetsInfoFutures;
 
       case 'option':
-        const datasetsInfoOption = createDatasetsInfoOption({ dataset, pathOutputDirectory });
-        return datasetsInfoOption;
+        throw new Error(`Asset '${dataset.asset}' is not implemented yet`);
+
+      // const datasetsInfoOption = createDatasetsInfoOption({ dataset, pathOutputDirectory });
+      // return datasetsInfoOption;
     }
   });
 
