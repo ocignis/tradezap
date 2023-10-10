@@ -11,10 +11,45 @@ TradeZap CLI tool keeps your trading data easily up to date.
 
 ## Usage
 
-- `npm i -D tradezap` or `bun add -D tradezap`
+- `npm i --save-dev tradezap`
 - Define which trading data you want in `tradezap.config.ts` file ([example](example/binance/tradezap.config.ts))
-- Run `npx tradezap` or `bunx tradezap`
+- Run `npx tradezap`
 - Trading data are ready to use 📈
+
+## Easily Grab Trading Data 🚀
+
+Define which trading data to download in `tradezap.config.ts` file ([example](example/binance/tradezap.config.ts))
+
+```ts
+// Download ETH-BUSD daily spot trades for 1st and 2nd of January 2021, 2022 and 2023
+{
+  tradingPair: 'ETH-BUSD',
+  asset: 'spot',
+  assetType: 'trades',
+  timeSpans: [
+    {
+      period: 'daily',
+      years: [2021, 2022, 2023],
+      months: [1],
+      days: [1, 2],
+    },
+  ],
+},
+// Download AVAX-BUSD monthly spot trades for August and September 2023
+{
+  tradingPair: 'AVAX-BUSD',
+  asset: 'spot',
+  assetType: 'trades',
+  timeSpans: [
+    {
+      period: 'monthly',
+      years: [2023],
+      months: [8, 9],
+    },
+  ],
+},
+...
+```
 
 ## Data Providers
 
@@ -24,7 +59,7 @@ Currently supported data providers:
 
 ## Development
 
-Requirement - [Bun v1.0.2+](https://bun.sh)
+Requirement - [Bun v1.0.4+](https://bun.sh)
 
 _Easily set up a local development environment!_
 
