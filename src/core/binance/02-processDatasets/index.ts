@@ -19,8 +19,11 @@ export const processDatasets = async ({
   shouldUnzipDatasets,
   datasetsInfo,
 }: ProcessDatasetsParams): Promise<void> => {
-  let numOfDatasetsDownloaded = 0;
-  let numFilesSkipped = 0;
+  const processStats = {
+    numProcessed: 0,
+    numFilesDownloaded: 0,
+    numFilesSkipped: 0,
+  };
 
   const processedDatasetsPromises = datasetsInfo.map(
     async ({ datasetUrl, targetPath, targetFolder, datasetFilename }) => {
@@ -30,10 +33,10 @@ export const processDatasets = async ({
         const doesDownloadedDatasetFileExist = await Bun.file(targetPathWithFinalExtension).exists();
 
         if (doesDownloadedDatasetFileExist) {
-          numOfDatasetsDownloaded++;
-          numFilesSkipped++;
+          processStats.numProcessed++;
+          processStats.numFilesSkipped++;
 
-          log.info(`Processing... ${numOfDatasetsDownloaded}/${datasetsInfo.length}`);
+          log.info(`Processing... ${processStats.numProcessed}/${datasetsInfo.length}`);
           return;
         }
       }
@@ -60,18 +63,21 @@ export const processDatasets = async ({
         await Bun.write(targetPath, fileBlob);
       }
 
-      numOfDatasetsDownloaded++;
+      processStats.numProcessed++;
+      processStats.numFilesDownloaded++;
 
-      log.info(`Processing... ${numOfDatasetsDownloaded}/${datasetsInfo.length}`);
+      log.info(`Processing... ${processStats.numFilesDownloaded}/${datasetsInfo.length}`);
     },
   );
 
   const processedDatasets = await Promise.all(processedDatasetsPromises);
   const processedDatasetsNotFound = processedDatasets.filter(Boolean);
 
-  log.info(`Processed ${numOfDatasetsDownloaded}/${datasetsInfo.length} dataset files.`);
-  log.info(`  • ${numOfDatasetsDownloaded} downloaded.`);
-  log.info(`  • ${numFilesSkipped} skipped.`);
+  log.info(`Processed ${processStats.numProcessed}/${datasetsInfo.length} dataset files.`);
+  if (isVerbose) {
+    log.info(`  • ${processStats.numFilesDownloaded} downloaded.`);
+    log.info(`  • ${processStats.numFilesSkipped} skipped.`);
+  }
 
   if (processedDatasetsNotFound.length) {
     log.info(`${processedDatasetsNotFound.length} dataset files  couldn't be downloaded (not found):`);
