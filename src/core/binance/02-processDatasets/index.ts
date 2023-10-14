@@ -75,8 +75,8 @@ export const processDatasets = async ({
 
   log.info(`Processed ${processStats.numProcessed}/${datasetsInfo.length} dataset files.`);
   if (isVerbose) {
-    log.info(`  • ${processStats.numFilesDownloaded} downloaded.`);
-    log.info(`  • ${processStats.numFilesSkipped} skipped.`);
+    log.info(`  • ${processStats.numFilesDownloaded} downloaded`);
+    log.info(`  • ${processStats.numFilesSkipped} skipped`);
   }
 
   if (processedDatasetsNotFound.length) {
