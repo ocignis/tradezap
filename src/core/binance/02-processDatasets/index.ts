@@ -7,12 +7,14 @@ import { log } from 'common/utils';
 import { DatasetsInfo } from '../01-createDatasetsInfo';
 
 type ProcessDatasetsParams = {
+  isRedownload: boolean;
   isVerbose: boolean;
   shouldUnzipDatasets: boolean;
   datasetsInfo: DatasetsInfo;
 };
 
 export const processDatasets = async ({
+  isRedownload,
   isVerbose,
   shouldUnzipDatasets,
   datasetsInfo,
@@ -21,6 +23,15 @@ export const processDatasets = async ({
 
   const processedDatasetsPromises = datasetsInfo.map(
     async ({ datasetUrl, targetPath, targetFolder, datasetFilename }) => {
+      const doesDownloadedDatasetFileExist = await Bun.file(targetPath).exists();
+
+      if (doesDownloadedDatasetFileExist && !isRedownload) {
+        numOfDatasetsDownloaded++;
+
+        log.info(`Processing... ${numOfDatasetsDownloaded}/${datasetsInfo.length}`);
+        return;
+      }
+
       const response = await fetch(datasetUrl);
 
       if (response.status === 404) {

@@ -7,10 +7,11 @@ import { processDatasets } from './binance/02-processDatasets';
 
 type DownloadDataParams = {
   pathConfigFile: string;
+  isRedownload: boolean;
   isVerbose: boolean;
 };
 
-export const downloadData = async ({ pathConfigFile, isVerbose }: DownloadDataParams) => {
+export const downloadData = async ({ pathConfigFile, isRedownload, isVerbose }: DownloadDataParams) => {
   const startTime = performance.now();
 
   const tradezapConfig = await getTradezapConfig({ pathConfigFile });
@@ -26,6 +27,7 @@ export const downloadData = async ({ pathConfigFile, isVerbose }: DownloadDataPa
         console.log('🔎 Log ~ datasetsInfo:', datasetsInfo);
 
         await processDatasets({
+          isRedownload,
           isVerbose,
           shouldUnzipDatasets: tradezapConfigProvider.settings.shouldUnzipDatasets ?? DEFAULT_SHOULD_UNZIP_DATASETS,
           datasetsInfo,
