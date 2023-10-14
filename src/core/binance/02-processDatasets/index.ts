@@ -23,13 +23,17 @@ export const processDatasets = async ({
 
   const processedDatasetsPromises = datasetsInfo.map(
     async ({ datasetUrl, targetPath, targetFolder, datasetFilename }) => {
-      const doesDownloadedDatasetFileExist = await Bun.file(targetPath).exists();
+      if (!isRedownload) {
+        const targetPathWithFinalExtension = shouldUnzipDatasets ? targetPath.replace('.zip', '.csv') : targetPath;
 
-      if (doesDownloadedDatasetFileExist && !isRedownload) {
-        numOfDatasetsDownloaded++;
+        const doesDownloadedDatasetFileExist = await Bun.file(targetPathWithFinalExtension).exists();
 
-        log.info(`Processing... ${numOfDatasetsDownloaded}/${datasetsInfo.length}`);
-        return;
+        if (doesDownloadedDatasetFileExist) {
+          numOfDatasetsDownloaded++;
+
+          log.info(`Processing... ${numOfDatasetsDownloaded}/${datasetsInfo.length}`);
+          return;
+        }
       }
 
       const response = await fetch(datasetUrl);
