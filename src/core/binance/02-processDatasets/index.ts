@@ -20,6 +20,7 @@ export const processDatasets = async ({
   datasetsInfo,
 }: ProcessDatasetsParams): Promise<void> => {
   let numOfDatasetsDownloaded = 0;
+  let numFilesSkipped = 0;
 
   const processedDatasetsPromises = datasetsInfo.map(
     async ({ datasetUrl, targetPath, targetFolder, datasetFilename }) => {
@@ -30,6 +31,7 @@ export const processDatasets = async ({
 
         if (doesDownloadedDatasetFileExist) {
           numOfDatasetsDownloaded++;
+          numFilesSkipped++;
 
           log.info(`Processing... ${numOfDatasetsDownloaded}/${datasetsInfo.length}`);
           return;
@@ -66,6 +68,10 @@ export const processDatasets = async ({
 
   const processedDatasets = await Promise.all(processedDatasetsPromises);
   const processedDatasetsNotFound = processedDatasets.filter(Boolean);
+
+  log.info(`Processed ${numOfDatasetsDownloaded}/${datasetsInfo.length} dataset files.`);
+  log.info(`  • ${numOfDatasetsDownloaded} downloaded.`);
+  log.info(`  • ${numFilesSkipped} skipped.`);
 
   if (processedDatasetsNotFound.length) {
     log.info(`${processedDatasetsNotFound.length} dataset files  couldn't be downloaded (not found):`);
