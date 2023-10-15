@@ -1,6 +1,7 @@
 import { mkdir } from 'fs/promises';
 
 import AdmZip from 'adm-zip';
+import { write, file } from 'bun';
 
 import { log } from 'common/utils';
 
@@ -30,7 +31,7 @@ export const processDatasets = async ({
       if (!isRedownload) {
         const targetPathWithFinalExtension = shouldUnzipDatasets ? targetPath.replace('.zip', '.csv') : targetPath;
 
-        const doesDownloadedDatasetFileExist = await Bun.file(targetPathWithFinalExtension).exists();
+        const doesDownloadedDatasetFileExist = await file(targetPathWithFinalExtension).exists();
 
         if (doesDownloadedDatasetFileExist) {
           processStats.numProcessed++;
@@ -58,9 +59,9 @@ export const processDatasets = async ({
         admZip.extractAllTo(targetFolder, true);
       } else {
         // Opened issue - https://github.com/oven-sh/bun/issues/5970
-        // await Bun.write(targetPath, file);
+        // await write(targetPath, file);
         const fileBlob = await response.blob();
-        await Bun.write(targetPath, fileBlob);
+        await write(targetPath, fileBlob);
       }
 
       processStats.numProcessed++;
