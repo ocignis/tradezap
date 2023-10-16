@@ -27,7 +27,11 @@ export const processDatasets = async ({
     numFilesSkipped: 0,
   };
 
-  const spinner = ora({ prefixText: 'Processing dataset files... ', spinner: 'dots', color: 'blue' });
+  const spinner = ora({
+    text: getSpinnerText({ done: 0, total: datasetsInfo.length }),
+    spinner: 'dots',
+    color: 'blue',
+  });
   spinner.start();
 
   const processedDatasetsPromises = datasetsInfo.map(
@@ -41,7 +45,7 @@ export const processDatasets = async ({
           processStats.numProcessed++;
           processStats.numFilesSkipped++;
 
-          spinner.text = `${processStats.numProcessed}/${datasetsInfo.length}`;
+          spinner.text = getSpinnerText({ done: processStats.numProcessed, total: datasetsInfo.length });
           return;
         }
       }
@@ -71,7 +75,7 @@ export const processDatasets = async ({
       processStats.numProcessed++;
       processStats.numFilesDownloaded++;
 
-      spinner.text = `${processStats.numProcessed}/${datasetsInfo.length}`;
+      spinner.text = getSpinnerText({ done: processStats.numProcessed, total: datasetsInfo.length });
     },
   );
 
@@ -95,3 +99,6 @@ export const processDatasets = async ({
     }
   }
 };
+
+const getSpinnerText = ({ done, total }: { done: number; total: number }) =>
+  `Processing dataset files... ${done}/${total}`;
