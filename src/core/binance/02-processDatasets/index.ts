@@ -2,6 +2,7 @@ import { mkdir } from 'fs/promises';
 
 import AdmZip from 'adm-zip';
 import { write, file } from 'bun';
+import ora from 'ora';
 
 import { log } from 'common/utils';
 
@@ -26,6 +27,9 @@ export const processDatasets = async ({
     numFilesSkipped: 0,
   };
 
+  const spinner = ora({ spinner: 'dots', color: 'blue' });
+  spinner.start();
+
   const processedDatasetsPromises = datasetsInfo.map(
     async ({ datasetUrl, targetPath, targetFolder, datasetFilename }) => {
       if (!isRedownload) {
@@ -37,7 +41,7 @@ export const processDatasets = async ({
           processStats.numProcessed++;
           processStats.numFilesSkipped++;
 
-          log.info(`Processing... ${processStats.numProcessed}/${datasetsInfo.length}`);
+          spinner.text = `Processing... ${processStats.numProcessed}/${datasetsInfo.length}`;
           return;
         }
       }
@@ -67,11 +71,14 @@ export const processDatasets = async ({
       processStats.numProcessed++;
       processStats.numFilesDownloaded++;
 
-      log.info(`Processing... ${processStats.numFilesDownloaded}/${datasetsInfo.length}`);
+      spinner.text = `Processing... ${processStats.numFilesDownloaded}/${datasetsInfo.length}`;
     },
   );
 
   const processedDatasets = await Promise.all(processedDatasetsPromises);
+
+  spinner.stop();
+
   const processedDatasetsNotFound = processedDatasets.filter(Boolean);
 
   log.info(`Processed ${processStats.numProcessed}/${datasetsInfo.length} dataset files.`);
