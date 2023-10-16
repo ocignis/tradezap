@@ -24,8 +24,6 @@ export const downloadData = async ({ pathConfigFile, isRedownload, isVerbose }: 
           pathOutputDirectory: tradezapConfigProvider.settings.outputDirectory ?? DEFAULT_PATH_OUTPUT_DIRECTORY,
         });
 
-        console.log('🔎 Log ~ datasetsInfo:', datasetsInfo);
-
         await processDatasets({
           isRedownload,
           isVerbose,
