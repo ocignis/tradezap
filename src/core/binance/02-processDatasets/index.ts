@@ -100,5 +100,5 @@ export const processDatasets = async ({
   }
 };
 
-const getSpinnerText = ({ done, total }: { done: number; total: number }) =>
+const getSpinnerText = <TDone extends number, TTotal extends number>({ done, total }: { done: TDone; total: TTotal }) =>
   `Processing dataset files... ${done}/${total}` as const;
