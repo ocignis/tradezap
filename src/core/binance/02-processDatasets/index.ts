@@ -101,4 +101,4 @@ export const processDatasets = async ({
 };
 
 const getSpinnerText = ({ done, total }: { done: number; total: number }) =>
-  `Processing dataset files... ${done}/${total}`;
+  `Processing dataset files... ${done}/${total}` as const;
