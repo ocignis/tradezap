@@ -69,6 +69,7 @@ export const processDatasets = async ({
         // Opened issue - https://github.com/oven-sh/bun/issues/5970
         // await write(targetPath, file);
         const fileBlob = await response.blob();
+        //@ts-expect-error - Library type is wrong
         await write(targetPath, fileBlob);
       }
 
