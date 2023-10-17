@@ -1,17 +1,17 @@
 import { DAYS, MONTHS, TimeSpan, YEARS } from 'core/binance/types/common';
-import { SpotAssetType } from 'core/binance/types/spot';
+import { DatasetBinanceSpot } from 'core/binance/types/spot';
 
 import { createDatasetFilename } from './createDatasetFilename';
 
 type CreateDatasetFilenamesParams = {
   timeSpan: TimeSpan;
-  tradingPair: string;
-  assetType: SpotAssetType;
+  tradingPairFormatted: string;
+  assetType: DatasetBinanceSpot['assetType'];
 };
 
 export const createDatasetFilenames = ({
   timeSpan,
-  tradingPair,
+  tradingPairFormatted,
   assetType,
 }: CreateDatasetFilenamesParams): ReadonlyArray<string> => {
   const { period } = timeSpan;
@@ -25,7 +25,13 @@ export const createDatasetFilenames = ({
 
     const datasetFilenamesMonths = months.flatMap((month) => {
       if (period === 'monthly') {
-        const datasetFilenamesFromMonth = createDatasetFilename({ tradingPair, assetType, period, year, month });
+        const datasetFilenamesFromMonth = createDatasetFilename({
+          tradingPairFormatted,
+          assetType,
+          period,
+          year,
+          month,
+        });
 
         return datasetFilenamesFromMonth;
       }
@@ -35,7 +41,7 @@ export const createDatasetFilenames = ({
 
       const datasetFilenamesFromDays = days.map((day) => {
         const datasetFilenamesFromDay = createDatasetFilename({
-          tradingPair,
+          tradingPairFormatted,
           assetType,
           period,
           year,

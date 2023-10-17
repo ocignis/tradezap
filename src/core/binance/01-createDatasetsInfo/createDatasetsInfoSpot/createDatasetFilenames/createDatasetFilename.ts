@@ -1,9 +1,9 @@
 import { TimeSpan, Day, Month, Year } from 'core/binance/types/common';
-import { SpotAssetType } from 'core/binance/types/spot';
+import { DatasetBinanceSpot } from 'core/binance/types/spot';
 
 type CreateDatasetFilenameBaseParams = {
-  tradingPair: string;
-  assetType: SpotAssetType;
+  tradingPairFormatted: string;
+  assetType: DatasetBinanceSpot['assetType'];
   year: Year;
   month: Month;
 };
@@ -20,11 +20,13 @@ type CreateDatasetFilenameDailyParams = {
 type CreateDatasetFilenameParams = CreateDatasetFilenameMonthlyParams | CreateDatasetFilenameDailyParams;
 
 export const createDatasetFilename = (params: CreateDatasetFilenameParams) => {
-  const { tradingPair, assetType, period, year, month } = params;
+  const { tradingPairFormatted, assetType, period, year, month } = params;
 
   const monthFormatted = String(month).padStart(2, '0');
 
-  const datasetFilenameBase = `${tradingPair}-${assetType}-${year}-${monthFormatted}` as const;
+  const assetTypeFormatted = assetType === 'klines' ? 'params.' : assetType;
+
+  const datasetFilenameBase = `${tradingPairFormatted}-${assetTypeFormatted}-${year}-${monthFormatted}` as const;
 
   if (period === 'monthly') {
     const datasetFilenameMonthly = `${datasetFilenameBase}.zip` as const;

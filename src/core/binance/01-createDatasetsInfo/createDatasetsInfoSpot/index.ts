@@ -16,16 +16,12 @@ export const createDatasetsInfoSpot = ({
 }: createDatasetsInfoSpotParams): DatasetsInfo => {
   const { asset, assetType, tradingPair, timeSpans } = dataset;
 
-  if (assetType === 'klines' || assetType === 'aggTrades') {
-    throw new Error(`Asset type '${assetType}' is not implemented yet`);
-  }
-
   const tradingPairFormatted = tradingPair.replace('-', '');
 
   const datasetsInfo = timeSpans.flatMap((timeSpan) => {
     const datasetFilenames = createDatasetFilenames({
       timeSpan,
-      tradingPair: tradingPairFormatted,
+      tradingPairFormatted,
       assetType,
     });
 
