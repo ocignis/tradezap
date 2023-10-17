@@ -17,13 +17,10 @@ export const createDatasetsInfoSpot = ({
   const { asset, assetType, tradingPair, timeSpans } = dataset;
 
   const tradingPairFormatted = tradingPair.replace('-', '');
+  const formattedAssetType = assetType === 'klines' ? dataset.interval : assetType;
 
   const datasetsInfo = timeSpans.flatMap((timeSpan) => {
-    const datasetFilenames = createDatasetFilenames({
-      timeSpan,
-      tradingPairFormatted,
-      assetType,
-    });
+    const datasetFilenames = createDatasetFilenames({ tradingPairFormatted, formattedAssetType, timeSpan });
 
     const datasetsInfoSingleTimeSpan = datasetFilenames.map((datasetFilename) => {
       const datasetUrl = `${BASE_URL}/${asset}/${timeSpan.period}/${assetType}/${tradingPairFormatted}/${datasetFilename}`;
