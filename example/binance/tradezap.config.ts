@@ -36,12 +36,12 @@ const TRADEZAP_CONFIG: TradezapConfig = [
             days: [1],
           },
           // - Every 1st of March for all years available
-          // {
-          //   period: 'daily',
-          //   years: [],
-          //   months: [3],
-          //   days: [1],
-          // },
+          {
+            period: 'daily',
+            years: [],
+            months: [3],
+            days: [1],
+          },
         ],
       },
       // Download ETH-BUSD daily spot trades for 1st of January 2021, 2022 and 2023
