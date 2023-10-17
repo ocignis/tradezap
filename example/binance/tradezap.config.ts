@@ -22,12 +22,12 @@ const TRADEZAP_CONFIG: TradezapConfig = [
             days: [1, 2, 3],
           },
           // - All days in October 2022
-          // {
-          //   period: 'daily',
-          //   years: [2022],
-          //   months: [10],
-          //   days: [],
-          // },
+          {
+            period: 'daily',
+            years: [2022],
+            months: [10],
+            days: [],
+          },
           // - Every 1st of the month in 2021
           // {
           //   period: 'daily',
