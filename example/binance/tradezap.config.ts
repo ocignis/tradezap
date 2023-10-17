@@ -74,6 +74,7 @@ const TRADEZAP_CONFIG: TradezapConfig = [
       {
         asset: 'spot',
         assetType: 'klines',
+        interval: '1m',
         tradingPair: 'AVAX-BUSD',
         timeSpans: [
           {
