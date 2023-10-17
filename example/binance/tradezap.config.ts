@@ -45,19 +45,19 @@ const TRADEZAP_CONFIG: TradezapConfig = [
         ],
       },
       // Download ETH-BUSD daily spot trades for 1st of January 2021, 2022 and 2023
-      // {
-      //   tradingPair: 'ETH-BUSD',
-      //   asset: 'spot',
-      //   assetType: 'trades',
-      //   timeSpans: [
-      //     {
-      //       period: 'daily',
-      //       years: [2021, 2022, 2023],
-      //       months: [1],
-      //       days: [1],
-      //     },
-      //   ],
-      // },
+      {
+        tradingPair: 'ETH-BUSD',
+        asset: 'spot',
+        assetType: 'trades',
+        timeSpans: [
+          {
+            period: 'daily',
+            years: [2021, 2022, 2023],
+            months: [1],
+            days: [1],
+          },
+        ],
+      },
       // Download AVAX-BUSD monthly spot trades for August and September 2023
       {
         tradingPair: 'AVAX-BUSD',
