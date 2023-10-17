@@ -23,9 +23,14 @@ export const createDatasetsInfoSpot = ({
     const datasetFilenames = createDatasetFilenames({ tradingPairFormatted, formattedAssetType, timeSpan });
 
     const datasetsInfoSingleTimeSpan = datasetFilenames.map((datasetFilename) => {
-      const datasetUrl = `${BASE_URL}/${asset}/${timeSpan.period}/${assetType}/${tradingPairFormatted}/${datasetFilename}`;
+      const datasetUrlBase = `${BASE_URL}/${asset}/${timeSpan.period}/${assetType}/${tradingPairFormatted}`;
+      const datasetUrl =
+        assetType === 'klines'
+          ? `${datasetUrlBase}/${dataset.interval}/${datasetFilename}`
+          : `${datasetUrlBase}/${datasetFilename}`;
 
-      const targetFolder = `${pathOutputDirectory}/${tradingPair}/${asset}/${assetType}/${timeSpan.period}`;
+      const targetFolderBase = `${pathOutputDirectory}/${tradingPair}/${asset}/${assetType}/${timeSpan.period}`;
+      const targetFolder = assetType === 'klines' ? `${targetFolderBase}/${dataset.interval}` : `${targetFolderBase}`;
 
       const targetPath = `${targetFolder}/${datasetFilename}`;
 

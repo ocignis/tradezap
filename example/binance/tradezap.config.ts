@@ -98,6 +98,33 @@ const TRADEZAP_CONFIG: TradezapConfig = [
           },
         ],
       },
+      {
+        asset: 'spot',
+        assetType: 'klines',
+        interval: '1h',
+        tradingPair: 'AVAX-BUSD',
+        timeSpans: [
+          {
+            period: 'daily',
+            years: [2023],
+            months: [10],
+            days: [15],
+          },
+        ],
+      },
+      {
+        asset: 'spot',
+        assetType: 'klines',
+        interval: '1d',
+        tradingPair: 'AVAX-BUSD',
+        timeSpans: [
+          {
+            period: 'monthly',
+            years: [2023],
+            months: [9],
+          },
+        ],
+      },
     ],
   },
 ];
