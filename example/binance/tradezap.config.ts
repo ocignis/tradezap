@@ -59,18 +59,18 @@ const TRADEZAP_CONFIG: TradezapConfig = [
       //   ],
       // },
       // Download AVAX-BUSD monthly spot trades for August and September 2023
-      // {
-      //   tradingPair: 'AVAX-BUSD',
-      //   asset: 'spot',
-      //   assetType: 'trades',
-      //   timeSpans: [
-      //     {
-      //       period: 'monthly',
-      //       years: [2023],
-      //       months: [8, 9],
-      //     },
-      //   ],
-      // },
+      {
+        tradingPair: 'AVAX-BUSD',
+        asset: 'spot',
+        assetType: 'trades',
+        timeSpans: [
+          {
+            period: 'monthly',
+            years: [2023],
+            months: [8, 9],
+          },
+        ],
+      },
     ],
   },
 ];
