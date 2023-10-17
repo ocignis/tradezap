@@ -93,10 +93,10 @@ export const processDatasets = async ({
   }
 
   if (processedDatasetsNotFound.length) {
-    log.info(`${processedDatasetsNotFound.length} dataset files couldn't be downloaded (not found):`);
+    log.infoSecondary(`${processedDatasetsNotFound.length} dataset files couldn't be downloaded (not found):`);
 
     if (isVerbose) {
-      processedDatasetsNotFound.forEach((datasetNotFound) => log.info(`  • ${datasetNotFound}`));
+      processedDatasetsNotFound.forEach((datasetNotFound) => log.infoSecondary(`  • ${datasetNotFound}`));
     }
   }
 };
