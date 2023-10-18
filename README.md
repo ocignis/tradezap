@@ -9,6 +9,8 @@ _⚡ Get trading data in a zap_
 
 TradeZap CLI tool keeps your trading data easily up to date.
 
+[![](misc/demo.gif)](https://github.com/ocignis/tradezap)
+
 ## Usage
 
 - `npm i --save-dev tradezap`
