@@ -8,7 +8,6 @@ type GetTradezapConfigParams = {
 };
 
 export const getTradezapConfig = async ({ pathConfigFile }: GetTradezapConfigParams): Promise<TradezapConfig> => {
-  console.log('🔎 Log ~ getTradezapConfig ~ pathConfigFile:', pathConfigFile);
   try {
     const absoluteConfigPath = `${process.cwd()}/${pathConfigFile}`;
 
