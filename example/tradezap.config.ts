@@ -71,6 +71,20 @@ const TRADEZAP_CONFIG: TradezapConfig = [
           },
         ],
       },
+      // Non existent data (will be reported as not found by CLI)
+      {
+        tradingPair: 'AVAX-BUSD',
+        asset: 'spot',
+        assetType: 'trades',
+        timeSpans: [
+          {
+            period: 'daily',
+            years: [2017],
+            months: [1],
+            days: [1],
+          },
+        ],
+      },
       {
         asset: 'spot',
         assetType: 'aggTrades',
