@@ -40,7 +40,7 @@
     "@commitlint/cli": "17.8.0",
     "@commitlint/config-conventional": "17.8.0",
     "@total-typescript/ts-reset": "0.5.1",
-    "@types/adm-zip": "0.5.2",
+    "@types/adm-zip": "0.5.3",
     "@typescript-eslint/eslint-plugin": "6.8.0",
     "@typescript-eslint/parser": "6.8.0",
     "bun-plugin-dts": "0.2.1",
