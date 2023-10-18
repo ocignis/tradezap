@@ -4,7 +4,7 @@ const TRADEZAP_CONFIG: TradezapConfig = [
   {
     provider: 'binance',
     settings: {
-      outputDirectory: 'example/binance/dataset',
+      outputDirectory: 'example/dataset',
       shouldUnzipDatasets: true,
     },
     datasets: [
