@@ -1,5 +1,6 @@
-import { DAYS, MONTHS, TimeSpan, YEARS } from 'core/binance/types/common';
-import { DatasetBinanceSpot, DatasetBinanceSpotKlines } from 'core/binance/types/spot';
+import type { TimeSpan } from 'core/binance/types/common';
+import { DAYS, MONTHS, YEARS } from 'core/binance/types/common';
+import type { DatasetBinanceSpot, DatasetBinanceSpotKlines } from 'core/binance/types/spot';
 
 import { createDatasetFilename } from './createDatasetFilename';
 

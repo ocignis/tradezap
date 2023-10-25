@@ -1,5 +1,5 @@
 import { cliParse } from 'cliParse';
-import { TradezapConfig } from 'common/types';
+import type { TradezapConfig } from 'common/types';
 import { log, VERSION_INFO } from 'common/utils';
 import { downloadData } from 'core';
 

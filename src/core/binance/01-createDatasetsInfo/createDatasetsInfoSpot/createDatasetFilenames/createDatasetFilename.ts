@@ -1,6 +1,6 @@
-import { Day, Month, Year } from 'core/binance/types/common';
+import type { Day, Month, Year } from 'core/binance/types/common';
 
-import { FormattedAssetType } from '.';
+import type { FormattedAssetType } from '.';
 
 type CreateDatasetFilenameParams = {
   tradingPairFormatted: string;

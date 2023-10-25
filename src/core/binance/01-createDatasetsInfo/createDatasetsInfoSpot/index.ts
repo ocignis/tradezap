@@ -1,7 +1,7 @@
 import { BASE_URL } from 'core/binance/consts';
 
-import { DatasetInfo, DatasetsInfo } from '..';
-import { DatasetBinanceSpot } from '../../types/spot';
+import type { DatasetInfo, DatasetsInfo } from '..';
+import type { DatasetBinanceSpot } from '../../types/spot';
 
 import { createDatasetFilenames } from './createDatasetFilenames';
 

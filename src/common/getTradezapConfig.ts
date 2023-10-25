@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 
-import { TradezapConfig } from 'common/types';
+import type { TradezapConfig } from 'common/types';
 
 type GetTradezapConfigParams = {
   pathConfigFile: string;

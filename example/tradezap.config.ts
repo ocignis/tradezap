@@ -1,4 +1,4 @@
-import { TradezapConfig } from 'common/types';
+import type { TradezapConfig } from 'common/types';
 
 const TRADEZAP_CONFIG: TradezapConfig = [
   {

@@ -1,6 +1,6 @@
-import { DatasetBinanceFutures } from './futures';
-import { DatasetBinanceOption } from './option';
-import { DatasetBinanceSpot } from './spot';
+import type { DatasetBinanceFutures } from './futures';
+import type { DatasetBinanceOption } from './option';
+import type { DatasetBinanceSpot } from './spot';
 
 /**
  * Tradezap config for Binance provider.

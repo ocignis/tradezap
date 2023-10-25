@@ -1,4 +1,4 @@
-import { TimeSpans, TradingPair } from './common';
+import type { TimeSpans, TradingPair } from './common';
 
 export type DatasetBinanceSpotAggTrades = {
   asset: 'spot';

@@ -1,4 +1,4 @@
-import { TimeSpanDaily, TimeSpanMonthly, TradingPair } from './common';
+import type { TimeSpanDaily, TimeSpanMonthly, TradingPair } from './common';
 
 /**
  * Derivative contracts futures.

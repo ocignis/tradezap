@@ -6,7 +6,7 @@ import ora from 'ora';
 
 import { log } from 'common/utils';
 
-import { DatasetsInfo } from '../01-createDatasetsInfo';
+import type { DatasetsInfo } from '../01-createDatasetsInfo';
 
 type ProcessDatasetsParams = {
   isRedownload: boolean;

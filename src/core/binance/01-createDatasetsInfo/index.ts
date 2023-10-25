@@ -1,4 +1,4 @@
-import { DatasetsBinance } from '../types';
+import type { DatasetsBinance } from '../types';
 
 // import { createDatasetsInfoFutures } from './createDatasetsInfoFutures';
 // import { createDatasetsInfoOption } from './createDatasetsInfoOption';
