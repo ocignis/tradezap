@@ -11,10 +11,6 @@ Define which trading data to download 🚀
 
 [![](misc/demo-config.gif)](https://github.com/ocignis/tradezap)
 
-TradeZap CLI tool keeps your trading data easily up to date.
-
-[![](misc/demo.gif)](https://github.com/ocignis/tradezap)
-
 ## Usage
 
 - `npm i --save-dev tradezap`
@@ -56,6 +52,10 @@ Define which trading data to download in `tradezap.config.ts` file ([example](ex
 },
 ...
 ```
+
+TradeZap CLI tool keeps your trading data easily up to date.
+
+[![](misc/demo.gif)](https://github.com/ocignis/tradezap)
 
 ## Data Providers
 
