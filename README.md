@@ -7,6 +7,9 @@
 
 _⚡ Get trading data in a zap_
 
+Define which trading data to download 🚀
+[![](misc/demo-config.gif)](https://github.com/ocignis/tradezap)
+
 TradeZap CLI tool keeps your trading data easily up to date.
 
 [![](misc/demo.gif)](https://github.com/ocignis/tradezap)
@@ -14,14 +17,13 @@ TradeZap CLI tool keeps your trading data easily up to date.
 ## Usage
 
 - `npm i --save-dev tradezap`
-- Define which trading data you want in `tradezap.config.ts` file ([example](example/binance/tradezap.config.ts))
+- Define which trading data you want in `tradezap.config.ts` file ([example](example/tradezap.config.ts))
 - Run `npx tradezap`
 - Trading data are ready to use 📈
 
 ## Easily Grab Trading Data 🚀
 
-Define which trading data to download in `tradezap.config.ts` file ([example](example/binance/tradezap.config.ts))
-[![](misc/demo-config.gif)](https://github.com/ocignis/tradezap)
+Define which trading data to download in `tradezap.config.ts` file ([example](example/tradezap.config.ts))
 
 ```ts
 // Download ETH-BUSD daily spot trades for 1st and 2nd of January 2021, 2022 and 2023
