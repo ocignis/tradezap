@@ -8,6 +8,7 @@
 _⚡ Get trading data in a zap_
 
 Define which trading data to download 🚀
+
 [![](misc/demo-config.gif)](https://github.com/ocignis/tradezap)
 
 TradeZap CLI tool keeps your trading data easily up to date.
