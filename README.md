@@ -53,7 +53,7 @@ Easily define which trading data to download in `tradezap.config.ts` file ([exam
 ...
 ```
 
-TradeZap CLI tool keeps your trading data easily up to date.
+TradeZap CLI tool keeps your trading data up to date.
 
 [![](misc/demo.gif)](https://github.com/ocignis/tradezap)
 
