@@ -7,7 +7,7 @@
 
 _⚡ Get trading data in a zap_
 
-Define which trading data to download 🚀
+Easily define which trading data to download 🚀
 
 [![](misc/demo-config.gif)](https://github.com/ocignis/tradezap)
 
@@ -18,9 +18,9 @@ Define which trading data to download 🚀
 - Run `npx tradezap`
 - Trading data are ready to use 📈
 
-## Easily Grab Trading Data 🚀
+## Grab Trading Data 🚀
 
-Define which trading data to download in `tradezap.config.ts` file ([example](example/tradezap.config.ts))
+Easily define which trading data to download in `tradezap.config.ts` file ([example](example/tradezap.config.ts))
 
 ```ts
 // Download ETH-BUSD daily spot trades for 1st and 2nd of January 2021, 2022 and 2023
