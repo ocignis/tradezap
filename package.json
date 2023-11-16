@@ -44,7 +44,7 @@
     "@typescript-eslint/eslint-plugin": "6.11.0",
     "@typescript-eslint/parser": "6.11.0",
     "bun-plugin-dts": "0.2.1",
-    "bun-types": "1.0.11",
+    "bun-types": "1.0.12",
     "eslint": "8.53.0",
     "eslint-config-prettier": "9.0.0",
     "eslint-import-resolver-typescript": "3.6.1",
