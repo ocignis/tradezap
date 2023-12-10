@@ -65,7 +65,7 @@ Currently supported data providers:
 
 ## Development
 
-Requirement - [Bun v1.0.15+](https://bun.sh)
+Requirement - [Bun v1.0.16+](https://bun.sh)
 
 _Easily set up a local development environment!_
 
