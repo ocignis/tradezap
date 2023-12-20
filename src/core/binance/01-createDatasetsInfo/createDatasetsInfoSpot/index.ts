@@ -30,7 +30,7 @@ export const createDatasetsInfoSpot = ({
           : `${datasetUrlBase}/${datasetFilename}`;
 
       const targetFolderBase = `${pathOutputDirectory}/${tradingPair}/${asset}/${assetType}/${timeSpan.period}`;
-      const targetFolder = assetType === 'klines' ? `${targetFolderBase}/${dataset.interval}` : `${targetFolderBase}`;
+      const targetFolder = assetType === 'klines' ? `${targetFolderBase}/${dataset.interval}` : targetFolderBase;
 
       const targetPath = `${targetFolder}/${datasetFilename}`;
 
