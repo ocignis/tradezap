@@ -34,9 +34,14 @@ export const cliParse = (): CliParseResult => {
 
   const cliParams = cli.parse();
 
-  const unknownOptions = checkForUnknownOptions({ allowedOptions: OPTIONS, options: Object.keys(cliParams.options) });
+  const unknownOptions = checkForUnknownOptions({
+    allowedOptions: OPTIONS,
+    options: Object.keys(cliParams.options).filter((option) => option !== '--'),
+  });
   if (unknownOptions.length > 0) {
-    throw new Error(`Unknown options passed to CLI: ${unknownOptions.join(', ')}`);
+    throw new Error(
+      `Unknown ${unknownOptions.length === 1 ? 'option' : 'options'} passed to CLI: ${unknownOptions.join(', ')}.`,
+    );
   }
 
   // console.log(JSON.stringify(cliParams, null, 2));
