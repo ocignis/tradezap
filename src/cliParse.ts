@@ -5,6 +5,17 @@ import { cac } from 'cac';
 import { DEFAULT_PATH_CONFIG_FILE } from 'common/consts';
 import { VERSION_INFO } from 'common/utils';
 
+type CliOption = { nameLong?: string; nameShort?: string; description?: string };
+type CliOptions = Record<string, CliOption>;
+
+const CLI_OPTIONS = {
+  config: { nameLong: 'config', nameShort: 'c', description: 'Custom config file' },
+  redownload: { nameLong: 'redownload', description: 'Download and overwrite data again even if they already exist' },
+  verbose: { nameLong: 'verbose', description: 'Verbose output' },
+  help: { nameLong: 'help', nameShort: 'h' },
+  version: { nameLong: 'version', nameShort: 'v' },
+} as const satisfies CliOptions;
+
 type CliParseResult = {
   shouldExitCli: boolean;
   pathConfigFile: string;
@@ -12,20 +23,22 @@ type CliParseResult = {
   isVerbose: boolean;
 };
 
-const OPTIONS = ['c', 'config', 'redownload', 'verbose', 'h', 'help', 'v', 'version'] as const;
-
 export const cliParse = (): CliParseResult => {
   const cli = cac('tradezap');
 
-  cli.option('-c, --config <filename>', 'Custom config file', {
-    default: DEFAULT_PATH_CONFIG_FILE,
-  });
+  cli.option(
+    `-${CLI_OPTIONS.config.nameShort}, --${CLI_OPTIONS.config.nameLong} <filename>`,
+    CLI_OPTIONS.config.description,
+    {
+      default: DEFAULT_PATH_CONFIG_FILE,
+    },
+  );
 
-  cli.option('--redownload', 'Download and overwrite data again even if they already exist', {
+  cli.option(`--${CLI_OPTIONS.redownload.nameLong}`, CLI_OPTIONS.redownload.description, {
     default: false,
   });
 
-  cli.option('--verbose', 'Verbose output', {
+  cli.option(`--${CLI_OPTIONS.verbose.nameLong}`, CLI_OPTIONS.verbose.description, {
     default: false,
   });
 
@@ -35,7 +48,7 @@ export const cliParse = (): CliParseResult => {
   const cliParams = cli.parse();
 
   const unknownOptions = checkForUnknownOptions({
-    allowedOptions: OPTIONS,
+    cliOptions: CLI_OPTIONS,
     options: Object.keys(cliParams.options).filter((option) => option !== '--'),
   });
   if (unknownOptions.length > 0) {
@@ -55,11 +68,16 @@ export const cliParse = (): CliParseResult => {
 };
 
 type CheckForUnknownOptionsParams = {
-  allowedOptions: ReadonlyArray<string>;
+  cliOptions: CliOptions;
   options: ReadonlyArray<string>;
 };
 
-const checkForUnknownOptions = ({ allowedOptions, options }: CheckForUnknownOptionsParams): ReadonlyArray<string> => {
-  const unknownOptions = options.filter((option) => !allowedOptions.includes(option));
+const checkForUnknownOptions = ({ cliOptions, options }: CheckForUnknownOptionsParams): ReadonlyArray<string> => {
+  const allowedCliOptions = Object.values(cliOptions)
+    .map((option) => [option.nameLong, option.nameShort])
+    .flat()
+    .filter((option) => option);
+
+  const unknownOptions = options.filter((option) => !allowedCliOptions.includes(option));
   return unknownOptions;
 };
