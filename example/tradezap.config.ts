@@ -139,19 +139,19 @@ const TRADEZAP_CONFIG: TradezapConfig = [
           },
         ],
       },
-      {
-        asset: 'option',
-        optionType: 'bvol-index',
-        tradingPair: 'AVAX-BUSD',
-        timeSpans: [
-          {
-            period: 'daily',
-            years: [2023],
-            months: [10],
-            days: [15],
-          },
-        ],
-      },
+      // {
+      //   asset: 'option',
+      //   optionType: 'bvol-index',
+      //   tradingPair: 'AVAX-BUSD',
+      //   timeSpans: [
+      //     {
+      //       period: 'daily',
+      //       years: [2023],
+      //       months: [10],
+      //       days: [15],
+      //     },
+      //   ],
+      // },
     ],
   },
 ];
