@@ -5,13 +5,22 @@ import { cac } from 'cac';
 import { DEFAULT_PATH_CONFIG_FILE } from 'common/consts';
 import { VERSION_INFO } from 'common/utils';
 
-type CliOption = { nameLong?: string; nameShort?: string; description?: string };
+type CliOption = {
+  nameLong?: string;
+  nameShort?: string;
+  default?: string | boolean;
+  description?: string;
+};
 type CliOptions = Record<string, CliOption>;
 
 const CLI_OPTIONS = {
-  config: { nameLong: 'config', nameShort: 'c', description: 'Custom config file' },
-  redownload: { nameLong: 'redownload', description: 'Download and overwrite data again even if they already exist' },
-  verbose: { nameLong: 'verbose', description: 'Verbose output' },
+  config: { nameLong: 'config', nameShort: 'c', default: DEFAULT_PATH_CONFIG_FILE, description: 'Custom config file' },
+  redownload: {
+    nameLong: 'redownload',
+    default: false,
+    description: 'Download and overwrite data again even if they already exist',
+  },
+  verbose: { nameLong: 'verbose', default: false, description: 'Verbose output' },
   help: { nameLong: 'help', nameShort: 'h' },
   version: { nameLong: 'version', nameShort: 'v' },
 } as const satisfies CliOptions;
@@ -30,16 +39,16 @@ export const cliParse = (): CliParseResult => {
     `-${CLI_OPTIONS.config.nameShort}, --${CLI_OPTIONS.config.nameLong} <filename>`,
     CLI_OPTIONS.config.description,
     {
-      default: DEFAULT_PATH_CONFIG_FILE,
+      default: CLI_OPTIONS.config.default,
     },
   );
 
   cli.option(`--${CLI_OPTIONS.redownload.nameLong}`, CLI_OPTIONS.redownload.description, {
-    default: false,
+    default: CLI_OPTIONS.redownload.default,
   });
 
   cli.option(`--${CLI_OPTIONS.verbose.nameLong}`, CLI_OPTIONS.verbose.description, {
-    default: false,
+    default: CLI_OPTIONS.verbose.default,
   });
 
   cli.help();
