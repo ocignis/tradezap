@@ -7,12 +7,20 @@ import { downloadData } from 'core';
 // export { TradezapConfig } from 'common/types';
 export type { TradezapConfig };
 
-log.info(`##### ⚡ TradeZap ${VERSION_INFO} #####`);
+const execute = async () => {
+  log.info(`##### ⚡ TradeZap ${VERSION_INFO} #####`);
 
-try {
-  const { pathConfigFile, isRedownload, isVerbose } = cliParse();
+  try {
+    const { shouldExitCli, pathConfigFile, isRedownload, isVerbose } = cliParse();
 
-  await downloadData({ pathConfigFile, isRedownload, isVerbose });
-} catch (err) {
-  log.error(err as string);
-}
+    if (shouldExitCli) {
+      return;
+    }
+
+    await downloadData({ pathConfigFile, isRedownload, isVerbose });
+  } catch (err) {
+    log.error(err as string);
+  }
+};
+
+void execute();

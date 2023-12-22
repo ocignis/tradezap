@@ -6,6 +6,7 @@ import { DEFAULT_PATH_CONFIG_FILE } from 'common/consts';
 import { VERSION_INFO } from 'common/utils';
 
 type CliParseResult = {
+  shouldExitCli: boolean;
   pathConfigFile: string;
   isRedownload: boolean;
   isVerbose: boolean;
@@ -31,7 +32,10 @@ export const cliParse = (): CliParseResult => {
 
   const cliParams = cli.parse();
 
+  // console.log(JSON.stringify(cliParams, null, 2));
+
   return {
+    shouldExitCli: cliParams.options.help || cliParams.options.version,
     pathConfigFile: cliParams.options.config,
     isRedownload: cliParams.options.redownload,
     isVerbose: cliParams.options.verbose,
