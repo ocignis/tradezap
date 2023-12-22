@@ -21,8 +21,7 @@
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "pretty": true,
-    "types": ["bun-types"]
+    "pretty": true
   },
   "include": [".", ".eslintrc.cjs", ".commitlintrc.cts"],
   "exclude": ["bin", "dist", "node_modules"]
