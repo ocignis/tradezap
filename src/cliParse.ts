@@ -12,6 +12,8 @@ type CliParseResult = {
   isVerbose: boolean;
 };
 
+const OPTIONS = ['c', 'config', 'redownload', 'verbose', 'h', 'help', 'v', 'version'] as const;
+
 export const cliParse = (): CliParseResult => {
   const cli = cac('tradezap');
 
@@ -32,6 +34,11 @@ export const cliParse = (): CliParseResult => {
 
   const cliParams = cli.parse();
 
+  const unknownOptions = checkForUnknownOptions({ allowedOptions: OPTIONS, options: Object.keys(cliParams.options) });
+  if (unknownOptions.length > 0) {
+    throw new Error(`Unknown options passed to CLI: ${unknownOptions.join(', ')}`);
+  }
+
   // console.log(JSON.stringify(cliParams, null, 2));
 
   return {
@@ -40,4 +47,14 @@ export const cliParse = (): CliParseResult => {
     isRedownload: cliParams.options.redownload,
     isVerbose: cliParams.options.verbose,
   };
+};
+
+type CheckForUnknownOptionsParams = {
+  allowedOptions: ReadonlyArray<string>;
+  options: ReadonlyArray<string>;
+};
+
+const checkForUnknownOptions = ({ allowedOptions, options }: CheckForUnknownOptionsParams): ReadonlyArray<string> => {
+  const unknownOptions = options.filter((option) => !allowedOptions.includes(option));
+  return unknownOptions;
 };
