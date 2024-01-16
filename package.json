@@ -41,7 +41,7 @@
     "@commitlint/config-conventional": "18.4.4",
     "@total-typescript/ts-reset": "0.5.1",
     "@types/adm-zip": "0.5.5",
-    "@types/bun": "1.0.1",
+    "@types/bun": "1.0.2",
     "@typescript-eslint/eslint-plugin": "6.18.1",
     "@typescript-eslint/parser": "6.18.1",
     "bun-plugin-dts": "0.2.1",
