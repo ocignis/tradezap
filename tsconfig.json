@@ -23,6 +23,6 @@
     "noUnusedParameters": true,
     "pretty": true,
   },
-  "include": [".", ".eslintrc.cjs", ".commitlintrc.cts"],
+  "include": [".", ".eslintrc.cjs", ".commitlintrc.ts"],
   "exclude": ["bin", "dist", "node_modules"],
 }
