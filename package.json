@@ -33,7 +33,7 @@
     "adm-zip": "0.5.10",
     "cac": "6.7.14",
     "chalk": "5.3.0",
-    "date-fns": "3.2.0",
+    "date-fns": "3.3.0",
     "ora": "8.0.1"
   },
   "devDependencies": {
