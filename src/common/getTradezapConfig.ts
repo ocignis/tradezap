@@ -17,7 +17,6 @@ export const getTradezapConfig = async ({ pathConfigFile }: GetTradezapConfigPar
 
     return tradezapConfig;
   } catch (error) {
-    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     throw new Error(`Error loading Tradezap config file. Config file '${pathConfigFile}' does not exist.`);
   }
 };
