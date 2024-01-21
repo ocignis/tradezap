@@ -3,8 +3,12 @@
   "description": "Get trading data in a zap",
   "version": "0.0.0",
   "type": "module",
-  "exports": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "exports": {
+    "import": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
   "sideEffects": false,
   "files": [
     "/bin",
