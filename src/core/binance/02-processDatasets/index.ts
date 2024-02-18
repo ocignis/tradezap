@@ -58,19 +58,16 @@ export const processDatasets = async ({
 
       await mkdir(targetFolder, { recursive: true });
 
+      const fileArrayBuffer = await response.arrayBuffer();
+
       if (shouldUnzipDatasets) {
-        const fileArrayBuffer = await response.arrayBuffer();
         const fileBuffer = Buffer.from(fileArrayBuffer);
 
         const admZip = new AdmZip(fileBuffer);
 
         admZip.extractAllTo(targetFolder, true);
       } else {
-        // Opened issue - https://github.com/oven-sh/bun/issues/5970
-        // await write(targetPath, file);
-        const fileBlob = await response.blob();
-        //@ts-expect-error - Library type is wrong
-        await write(targetPath, fileBlob);
+        await write(targetPath, fileArrayBuffer);
       }
 
       processStats.numProcessed++;
