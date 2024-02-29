@@ -42,13 +42,13 @@
     "ora": "8.0.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "18.6.1",
-    "@commitlint/config-conventional": "18.6.2",
+    "@commitlint/cli": "19.0.3",
+    "@commitlint/config-conventional": "19.0.3",
     "@total-typescript/ts-reset": "0.5.1",
     "@types/adm-zip": "0.5.5",
-    "@types/bun": "1.0.7",
-    "@typescript-eslint/eslint-plugin": "7.0.2",
-    "@typescript-eslint/parser": "7.0.2",
+    "@types/bun": "1.0.8",
+    "@typescript-eslint/eslint-plugin": "7.1.0",
+    "@typescript-eslint/parser": "7.1.0",
     "bun-plugin-dts": "0.2.1",
     "eslint": "8.57.0",
     "eslint-config-prettier": "9.1.0",
