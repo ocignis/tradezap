@@ -60,7 +60,7 @@ TradeZap CLI tool keeps your trading data up to date.
 ## Options Available
 
 ```sh
-  $ tradezap [options]
+tradezap [options]
 
 Options:
   -c, --config <filename>  Custom config file (default: tradezap.config.ts)
