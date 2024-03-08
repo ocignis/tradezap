@@ -57,6 +57,19 @@ TradeZap CLI tool keeps your trading data up to date.
 
 [![](misc/demo.gif)](https://github.com/ocignis/tradezap)
 
+## Options Available
+
+```sh
+  $ tradezap [options]
+
+Options:
+  -c, --config <filename>  Custom config file (default: tradezap.config.ts)
+  --redownload             Download and overwrite data again even if they already exist (default: false)
+  --verbose                Verbose output (default: false)
+  -h, --help               Display this message
+  -v, --version            Display version number
+```
+
 ## Data Providers
 
 Currently supported data providers:
