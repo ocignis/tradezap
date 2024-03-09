@@ -63,10 +63,10 @@ TradeZap CLI tool keeps your trading data up to date.
 tradezap [options]
 
 Options:
-  -c, --config <filename>  Custom config file (default: tradezap.config.ts)
+  -c, --config <filename>  Config file (default: tradezap.config.ts)
   --redownload             Download and overwrite data again even if they already exist (default: false)
   --verbose                Verbose output (default: false)
-  -h, --help               Display this message
+  -h, --help               Display help
   -v, --version            Display version number
 ```
 
