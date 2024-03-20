@@ -28,6 +28,7 @@ const eslintConfig = {
     '@typescript-eslint/no-confusing-void-expression': ['error', { ignoreArrowShorthand: true }],
     '@typescript-eslint/switch-exhaustiveness-check': 'error',
     '@typescript-eslint/consistent-type-imports': 'error',
+    '@typescript-eslint/restrict-template-expressions': 'off',
 
     'import/no-default-export': 'error',
     'import/order': [
