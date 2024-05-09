@@ -3,7 +3,7 @@ name: CI
 on: push
 
 env:
-  BUN_VERSION: '1.1.4'
+  BUN_VERSION: '1.1.7'
   FILE_PATH_VERSION_INFO: ./src/common/utils/version-info.ts
 
 jobs:
