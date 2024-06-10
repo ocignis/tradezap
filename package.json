@@ -32,7 +32,7 @@
     "test-watch": "bun test --watch",
     "test-coverage": "bun test --coverage",
     "semantic-release": "semantic-release --branches main",
-    "update-deps": "bun update --latest",
+    "update-deps": "bun update --latest --dry-run",
     "clean": "rm -rf node_modules coverage dist compiled"
   },
   "dependencies": {
