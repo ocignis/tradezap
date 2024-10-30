@@ -10,7 +10,7 @@
     "composite": true,
     "baseUrl": "src",
     "paths": {
-      ".": ["."],
+      ".": ["."]
     },
     "downlevelIteration": true,
     "skipLibCheck": true,
@@ -21,8 +21,8 @@
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "pretty": true,
+    "pretty": true
   },
   "include": [".", ".eslintrc.cjs", ".commitlintrc.ts"],
-  "exclude": ["bin", "dist", "node_modules"],
+  "exclude": ["bin", "dist", "node_modules"]
 }

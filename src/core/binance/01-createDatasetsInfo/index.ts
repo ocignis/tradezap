@@ -21,9 +21,10 @@ export type DatasetsInfo = ReadonlyArray<DatasetInfo>;
 export const createDatasetsInfo = ({ datasets, pathOutputDirectory }: CreateDatasetsInfoParams): DatasetsInfo => {
   const datasetsInfo = datasets.flatMap((dataset) => {
     switch (dataset.asset) {
-      case 'spot':
+      case 'spot': {
         const datasetsInfoSpot = createDatasetsInfoSpot({ dataset, pathOutputDirectory });
         return datasetsInfoSpot;
+      }
 
       case 'futures':
         throw new Error(`Asset '${dataset.asset}' is not implemented yet`);

@@ -1,7 +1,7 @@
 import type { DatasetsInfo } from '..';
 import type { DatasetBinanceOption } from '../../types/option';
 
-type createDatasetsInfoOptionParams = {
+type CreateDatasetsInfoOptionParams = {
   dataset: DatasetBinanceOption;
   pathOutputDirectory: string;
 };
@@ -10,7 +10,7 @@ type createDatasetsInfoOptionParams = {
 export const createDatasetsInfoOption = ({
   dataset,
   pathOutputDirectory,
-}: createDatasetsInfoOptionParams): DatasetsInfo => {
+}: CreateDatasetsInfoOptionParams): DatasetsInfo => {
   console.log('🔎 Log ~ dataset:', dataset);
 
   console.log('🔎 Log ~ pathOutputDirectory:', pathOutputDirectory);

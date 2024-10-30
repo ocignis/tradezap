@@ -1,7 +1,7 @@
 import type { DatasetsInfo } from '..';
 import type { DatasetBinanceFutures } from '../../types/futures';
 
-type createDatasetsInfoFuturesParams = {
+type CreateDatasetsInfoFuturesParams = {
   dataset: DatasetBinanceFutures;
   pathOutputDirectory: string;
 };
@@ -10,7 +10,7 @@ type createDatasetsInfoFuturesParams = {
 export const createDatasetsInfoFutures = ({
   dataset,
   pathOutputDirectory,
-}: createDatasetsInfoFuturesParams): DatasetsInfo => {
+}: CreateDatasetsInfoFuturesParams): DatasetsInfo => {
   console.log('🔎 Log ~ dataset:', dataset);
 
   console.log('🔎 Log ~ pathOutputDirectory:', pathOutputDirectory);

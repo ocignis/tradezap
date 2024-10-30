@@ -18,7 +18,8 @@ export const downloadData = async ({ pathConfigFile, isRedownload, isVerbose }: 
 
   const tradezapConfigPromises = tradezapConfig.map(async (tradezapConfigProvider) => {
     switch (tradezapConfigProvider.provider) {
-      case 'binance':
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+      case 'binance': {
         const datasetsInfo = createDatasetsInfo({
           datasets: tradezapConfigProvider.datasets,
           pathOutputDirectory: tradezapConfigProvider.settings.outputDirectory ?? DEFAULT_PATH_OUTPUT_DIRECTORY,
@@ -32,6 +33,7 @@ export const downloadData = async ({ pathConfigFile, isRedownload, isVerbose }: 
         });
 
         break;
+      }
     }
   });
 

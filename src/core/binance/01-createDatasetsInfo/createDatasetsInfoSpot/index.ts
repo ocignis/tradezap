@@ -5,7 +5,7 @@ import type { DatasetBinanceSpot } from '../../types/spot';
 
 import { createDatasetFilenames } from './createDatasetFilenames';
 
-type createDatasetsInfoSpotParams = {
+type CreateDatasetsInfoSpotParams = {
   dataset: DatasetBinanceSpot;
   pathOutputDirectory: string;
 };
@@ -13,7 +13,7 @@ type createDatasetsInfoSpotParams = {
 export const createDatasetsInfoSpot = ({
   dataset,
   pathOutputDirectory,
-}: createDatasetsInfoSpotParams): DatasetsInfo => {
+}: CreateDatasetsInfoSpotParams): DatasetsInfo => {
   const { asset, assetType, tradingPair, timeSpans } = dataset;
 
   const tradingPairFormatted = tradingPair.replace('-', '');
