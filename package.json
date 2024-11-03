@@ -16,7 +16,7 @@
     "README.md"
   ],
   "bin": {
-    "tradezap": "./bin/index.js"
+    "tradezap": "bin/index.js"
   },
   "scripts": {
     "prepare": "husky",
@@ -65,7 +65,10 @@
   "license": "MIT",
   "author": "Marko Kosir <kosir.mar@gmail.com>",
   "homepage": "https://github.com/ocignis/tradezap",
-  "repository": "ocignis/tradezap",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ocignis/tradezap.git"
+  },
   "bugs": "https://github.com/ocignis/tradezap/issues",
   "keywords": [
     "trade-data",
