@@ -95,7 +95,7 @@ All contributions are welcome!
 [npm-url]: https://www.npmjs.com/package/tradezap
 [npm-badge]: https://img.shields.io/npm/v/tradezap.svg
 [downloads-badge]: https://img.shields.io/npm/dm/tradezap.svg?color=blue
-[ci-badge]: https://github.com/ocignis/tradezap/actions/workflows/CI.yml/badge.svg
-[ci-url]: https://github.com/ocignis/tradezap/actions/workflows/CI.yml
+[ci-badge]: https://github.com/ocignis/tradezap/actions/workflows/main.yml/badge.svg
+[ci-url]: https://github.com/ocignis/tradezap/actions/workflows/main.yml
 [typescript-badge]: https://badges.frapsoft.com/typescript/code/typescript.svg?v=101
 [typescript-url]: https://github.com/microsoft/TypeScript
