@@ -26,6 +26,10 @@ jobs:
       - name: Install dependencies 🔧
         run: bun i
 
+      - name: REMOVE
+        run: |
+          npx semantic-release --dry-run
+
       - name: Build 🏗️
         run: bun run build
 
