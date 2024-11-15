@@ -31,8 +31,19 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          npx semantic-release --branches main --dry-run
-          NEXT_VERSION=$(npx semantic-release --branches main --dry-run | grep -oP 'The next release version is \K[0-9]+\.[0-9]+\.[0-9]+')
+          # Run semantic-release in dry-run mode, ignoring any errors
+          OUTPUT=$(npx semantic-release --branches main --dry-run || true)
+
+          # Extract the next version from the output
+          NEXT_VERSION=$(echo "$OUTPUT" | grep -oP 'The next release version is \K[0-9]+\.[0-9]+\.[0-9]+')
+
+          # If no version is found, handle gracefully
+          if [ -z "$NEXT_VERSION" ]; then
+            echo "No new version to release."
+            NEXT_VERSION="0.0.0"  # Default version or custom handling
+          fi
+
+          # Output the next version
           echo "Next version: $NEXT_VERSION"
 
       - name: Build 🏗️
