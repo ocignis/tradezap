@@ -29,6 +29,8 @@ jobs:
       - name: REMOVE
         run: |
           npx semantic-release --dry-run
+          NEXT_VERSION=$(npx semantic-release --dry-run | grep -oP 'The next release version is \K[0-9]+\.[0-9]+\.[0-9]+')
+          echo "Next version: $NEXT_VERSION"
 
       - name: Build 🏗️
         run: bun run build
