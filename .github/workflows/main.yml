@@ -28,8 +28,8 @@ jobs:
 
       - name: REMOVE
         run: |
-          npx semantic-release --dry-run
-          NEXT_VERSION=$(npx semantic-release --dry-run | grep -oP 'The next release version is \K[0-9]+\.[0-9]+\.[0-9]+')
+          npx semantic-release --branches main --dry-run
+          NEXT_VERSION=$(npx semantic-release --branches main --dry-run | grep -oP 'The next release version is \K[0-9]+\.[0-9]+\.[0-9]+')
           echo "Next version: $NEXT_VERSION"
 
       - name: Build 🏗️
@@ -114,7 +114,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          npx semantic-release --dry-run
+          npx semantic-release --branches main --dry-run
           VERSION_SPACES=$(bun run release --dry-run | grep -oP 'Published release \K.*? ')
           VERSION="${VERSION_SPACES// /}"
           echo "export const VERSION_INFO = 'v$VERSION';" > $FILE_PATH_VERSION_INFO
