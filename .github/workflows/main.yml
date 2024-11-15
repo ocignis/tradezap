@@ -27,6 +27,9 @@ jobs:
         run: bun i
 
       - name: REMOVE
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           npx semantic-release --branches main --dry-run
           NEXT_VERSION=$(npx semantic-release --branches main --dry-run | grep -oP 'The next release version is \K[0-9]+\.[0-9]+\.[0-9]+')
