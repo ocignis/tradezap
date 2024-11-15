@@ -26,26 +26,6 @@ jobs:
       - name: Install dependencies 🔧
         run: bun i
 
-      - name: REMOVE
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          # Run semantic-release in dry-run mode, ignoring any errors
-          OUTPUT=$(npx semantic-release --branches main --dry-run || true)
-
-          # Extract the next version from the output
-          NEXT_VERSION=$(echo "$OUTPUT" | grep -oP 'The next release version is \K[0-9]+\.[0-9]+\.[0-9]+')
-
-          # If no version is found, handle gracefully
-          if [ -z "$NEXT_VERSION" ]; then
-            echo "No new version to release."
-            NEXT_VERSION="0.0.0"  # Default version or custom handling
-          fi
-
-          # Output the next version
-          echo "Next version: $NEXT_VERSION"
-
       - name: Build 🏗️
         run: bun run build
 
@@ -128,7 +108,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          npx semantic-release --branches main --dry-run
           VERSION_SPACES=$(bun run release --dry-run | grep -oP 'Published release \K.*? ')
           VERSION="${VERSION_SPACES// /}"
           echo "export const VERSION_INFO = 'v$VERSION';" > $FILE_PATH_VERSION_INFO
