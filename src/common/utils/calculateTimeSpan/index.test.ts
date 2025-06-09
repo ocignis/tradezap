@@ -1,3 +1,4 @@
+// eslint-disable-next-line import-x/no-unresolved
 import { expect, test, describe } from 'bun:test';
 
 import { calculateTimeSpan } from '.';
